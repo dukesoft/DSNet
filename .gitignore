@@ -1,0 +1,22 @@
+.idea
+
+#ignore GMLive
+datafiles/gc.dll
+datafiles/gmlive.html
+datafiles/gmlive-server.exe
+datafiles/gmlive-server.n
+datafiles/neko.dll
+datafiles/regexp.ndll
+datafiles/std.ndll
+
+datafiles_yy/gc.dll.yy
+datafiles_yy/gmlive.html.yy
+datafiles_yy/gmlive-server.exe.yy
+datafiles_yy/gmlive-server.n.yy
+datafiles_yy/neko.dll.yy
+datafiles_yy/regexp.ndll.yy
+datafiles_yy/std.ndll.yy
+
+extensions/GMLive
+
+objects/obj_gmlive
