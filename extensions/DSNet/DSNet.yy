@@ -22,7 +22,44 @@
     "description": "",
     "extensionName": "",
     "files": [
-        
+        {
+            "id": "79706e9b-a45f-47a4-9690-2fafec25c352",
+            "modelName": "GMExtensionFile",
+            "mvc": "1.0",
+            "ProxyFiles": [
+                
+            ],
+            "constants": [
+                
+            ],
+            "copyToTargets": 144150372447944736,
+            "filename": "client.js",
+            "final": "",
+            "functions": [
+                {
+                    "id": "41876f13-0783-4568-ad9e-2000b1194248",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        2
+                    ],
+                    "externalName": "dsnet_test_buffer",
+                    "help": "",
+                    "hidden": false,
+                    "kind": 5,
+                    "name": "dsnet_test_buffer",
+                    "returnType": 1
+                }
+            ],
+            "init": "",
+            "kind": 5,
+            "order": [
+                "41876f13-0783-4568-ad9e-2000b1194248"
+            ],
+            "origname": "",
+            "uncompress": false
+        }
     ],
     "gradleinject": "",
     "helpfile": "",
