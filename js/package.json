@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "dsnet",
+  "version": "1.0.0",
+  "description": "DukeSoft Networking for GMS2",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RobQuistNL/DSNet.git"
+  },
+  "keywords": [
+    "game",
+    "maker",
+    "studio",
+    "2",
+    "network"
+  ],
+  "author": "Rob Quist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobQuistNL/DSNet/issues"
+  },
+  "homepage": "https://github.com/RobQuistNL/DSNet#readme",
+  "dependencies": {
+    "ws": "^6.1.0"
+  }
+}

@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Testclient</title>
+</head>
+<body>
+<h2>This is a testing client for the websocket server</h2>
+
+<script type="text/javascript" src="client.js"></script>
+
+
+<script type="text/javascript">
+    let connection = undefined;
+    if (dsnet_ws_supported()) {
+        console.log('Trying to connect');
+        connection = dsnet_ws_connect('127.0.0.1', 8001);
+    }
+
+    setTimeout(function() {
+        if (connection.connected) {
+            dsnet_ws_send(connection, 'Hodor');
+        }
+    }, 1000);
+
+</script>
+
+</body>
+</html>
