@@ -1,0 +1,1 @@
+dsnet_server_destroy(server);

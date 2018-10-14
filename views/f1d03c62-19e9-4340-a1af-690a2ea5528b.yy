@@ -4,7 +4,14 @@
     "mvc": "1.1",
     "name": "f1d03c62-19e9-4340-a1af-690a2ea5528b",
     "children": [
-        
+        "667e9d87-317a-42ff-a281-586bf69b0dbd",
+        "30357c53-851a-4500-b50f-1f186425e996",
+        "92215a3d-b6ac-40b1-b00f-139655dbb7c9",
+        "f30b4678-3885-48a4-9f60-942b42cf10e7",
+        "4244934c-6d68-4b52-a864-642eab1759a2",
+        "7c5b9bdb-c0a4-44cd-a729-f4080475ffcd",
+        "b5abed5b-e618-4eb6-98e9-91211e40846d",
+        "b7488409-e977-4605-9a68-ab3d41c5204e"
     ],
     "filterType": "GMScript",
     "folderName": "DSNet",

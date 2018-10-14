@@ -42,20 +42,54 @@
                     "mvc": "1.0",
                     "argCount": 0,
                     "args": [
-                        2
+                        1,
+                        1
                     ],
-                    "externalName": "dsnet_test_buffer",
-                    "help": "",
+                    "externalName": "dsnet_js_send_buffer",
+                    "help": "dsnet_js_send_buffer(socket, buffer)",
                     "hidden": false,
                     "kind": 5,
-                    "name": "dsnet_test_buffer",
+                    "name": "dsnet_js_send_buffer",
                     "returnType": 1
+                },
+                {
+                    "id": "38a32fd7-d53c-4266-a5ce-27fa7f2b9ebc",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        1,
+                        2
+                    ],
+                    "externalName": "dsnet_js_connect",
+                    "help": "dsnet_js_connect(ip, port)",
+                    "hidden": false,
+                    "kind": 5,
+                    "name": "dsnet_js_connect",
+                    "returnType": 1
+                },
+                {
+                    "id": "7873782a-be4f-4411-af9c-b778cde8e06a",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        
+                    ],
+                    "externalName": "dsnet_js_ws_supported",
+                    "help": "dsnet_js_ws_supported()",
+                    "hidden": false,
+                    "kind": 5,
+                    "name": "dsnet_js_ws_supported",
+                    "returnType": 2
                 }
             ],
             "init": "",
             "kind": 5,
             "order": [
-                "41876f13-0783-4568-ad9e-2000b1194248"
+                "41876f13-0783-4568-ad9e-2000b1194248",
+                "38a32fd7-d53c-4266-a5ce-27fa7f2b9ebc",
+                "7873782a-be4f-4411-af9c-b778cde8e06a"
             ],
             "origname": "",
             "uncompress": false

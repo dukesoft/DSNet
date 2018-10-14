@@ -1,0 +1,1 @@
+debug_log("Received callback: " + string(argument0));

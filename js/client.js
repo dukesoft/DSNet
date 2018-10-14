@@ -29,6 +29,7 @@ function dsnet_ws_connect(host, port) {
 
     connection.ws_handle.onmessage = function (evt) {
         console.log('Received message from ' + host + ":" + port + ":", evt.data);
+        connection.ws_handle.send(evt.data);
     };
 
     connection.ws_handle.onclose = function() {
@@ -45,4 +46,9 @@ function dsnet_ws_send(connection, message) {
 
 function dsnet_test_buffer(buffer) {
     console.log(buffer);
+}
+
+function dsnet_test_callback() {
+    console.log("Js got request for callback:");
+    gmcallback_dsnet_message("Is this a valid callback?");
 }

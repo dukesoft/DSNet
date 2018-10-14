@@ -1,0 +1,1 @@
+dsnet_client_destroy(client);
