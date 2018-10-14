@@ -10,8 +10,10 @@ network_timeout = undefined;
 func_disconnect = undefined;
 func_data = undefined;
 
-server_socket = undefined;
+socket = undefined;
 
 connected = false;
 
 parent = noone;
+
+messageTimeout = 0;

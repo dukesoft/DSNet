@@ -8,7 +8,17 @@ draw_set_font(fnt_dsnet_debug);
 socketstring = "";
 var key = ds_map_find_first(socketHandles);
 while (!is_undefined(key)) {
-	socketstring += string(key) + ": ["+string(socketHandles[? key])+"] " + string((socketHandles[? key].server) ? "SERVER" : "CLIENT") + " - " + string((socketHandles[? key].connected) ? "CONNECTED" : "NOT CONNECTED") + "\n";
+	var obj = socketHandles[? key];
+	socketstring += string(key) + ": ["+string(obj)+"] " + string((obj.server) ? "SERVER" : "CLIENT") + " - " + string((obj.connected) ? "CONNECTED" : "NOT CONNECTED") + " | " + string((obj.server) ? " Clients: " +string(ds_map_size(obj.clients)) + "\n" : "\n");
+	
+	if (obj.server) {
+		var ckey = ds_map_find_first(obj.clients);
+		while (!is_undefined(ckey)) {
+			var cobj = obj.clients[? ckey];
+			socketstring += "    " + string(ckey) + ": ["+string(cobj)+"] " + string((cobj.websocket) ? "WS" : "TCP") + " | " + string((cobj.handshake) ? "HANDSHAKE" : "NO HANDSHAKE") + " | Ping: " + string(cobj.ping) + "\n";
+			ckey = ds_map_find_next(obj.clients, ckey);
+		}
+	}
 	key = ds_map_find_next(socketHandles, key);
 }
 

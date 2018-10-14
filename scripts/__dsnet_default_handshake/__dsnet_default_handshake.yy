@@ -1,8 +1,8 @@
 {
-    "id": "b7488409-e977-4605-9a68-ab3d41c5204e",
+    "id": "b1935eef-ec05-4456-a561-f2f4440970d4",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "dsnet_netevent_to_string",
+    "name": "__dsnet_default_handshake",
     "IsCompatibility": false,
     "IsDnD": false
 }

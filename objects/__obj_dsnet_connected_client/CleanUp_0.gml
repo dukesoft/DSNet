@@ -1,2 +1,1 @@
-///Remove ourselves from the server
-dsnet_server_client_disconnect(id);
+buffer_delete(send_buffer);

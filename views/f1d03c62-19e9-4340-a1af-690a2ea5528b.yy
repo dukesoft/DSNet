@@ -11,7 +11,8 @@
         "4244934c-6d68-4b52-a864-642eab1759a2",
         "7c5b9bdb-c0a4-44cd-a729-f4080475ffcd",
         "b5abed5b-e618-4eb6-98e9-91211e40846d",
-        "b7488409-e977-4605-9a68-ab3d41c5204e"
+        "35817adf-e3f7-4959-a31b-631601faa6f2",
+        "c51da118-bccd-41f5-8d7f-7bc46a8c17d5"
     ],
     "filterType": "GMScript",
     "folderName": "DSNet",
