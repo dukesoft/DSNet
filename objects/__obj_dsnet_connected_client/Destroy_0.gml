@@ -1,2 +1,2 @@
 ///Remove ourselves from the server
-dsnet_server_client_disconnect(id);
+dsnet_server_client_disconnect(id, "Server disconnected you.");

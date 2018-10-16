@@ -3,6 +3,8 @@ debug = true;
 verbose = true;
 network_timeout = 10 * 1000; //10 seconds
 handshake_timeout = 1; //1 second - if handshake doesn't properly happen within 1 second, kill the connection
+ping_time = 1; //1 ping per second
+
 
 custom_id_buffer_type = buffer_u8;
 

@@ -26,7 +26,6 @@ with (instance) {
 		socket = network_create_socket(network_socket_tcp);
 		network_set_timeout(socket, __obj_dsnet_container.network_timeout, __obj_dsnet_container.network_timeout);
 		var result = network_connect_raw(socket, ip, port);
-		show_debug_message("--------------------===================="+string(result));
 	}
 }
 

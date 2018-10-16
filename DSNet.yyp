@@ -479,6 +479,14 @@
             }
         },
         {
+            "Key": "a8e7d0c5-2493-438c-9f52-6dc6ad303237",
+            "Value": {
+                "id": "c45a4598-aaee-4b2d-90fe-7e3c8e046ece",
+                "resourcePath": "scripts\\__dsnet_cr_disconnect\\__dsnet_cr_disconnect.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "a9188620-a624-4a5a-83ae-a1b53faf038b",
             "Value": {
                 "id": "78929bdb-d4f5-4b38-9d17-f98c350e227c",
@@ -677,6 +685,7 @@
         "98138f87-7ca5-4936-a1b7-8e3afb9360a7",
         "d00b4286-2361-4b72-a73f-d103ef430825",
         "1a963e64-426d-4608-9c46-78140a754028",
+        "a8e7d0c5-2493-438c-9f52-6dc6ad303237",
         "7e960f90-6bbe-4307-8914-fd91fc67e9a3",
         "6b195111-b8d0-4737-b45a-05f893615a50",
         "b1935eef-ec05-4456-a561-f2f4440970d4",

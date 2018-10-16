@@ -9,7 +9,7 @@ socketstring = "";
 var key = ds_map_find_first(socketHandles);
 while (!is_undefined(key)) {
 	var obj = socketHandles[? key];
-	socketstring += string(key) + ": ["+string(obj)+"] " + string((obj.server) ? "SERVER" : "CLIENT") + " - " + string((obj.connected) ? "CONNECTED" : "NOT CONNECTED") + " | " + string((obj.server) ? " Clients: " +string(ds_map_size(obj.clients)) + "\n" : "\n");
+	socketstring += string(key) + ": ["+string(obj)+"] " + string((obj.server) ? "SERVER" : "CLIENT") + " - " + string((obj.connected) ? "CONNECTED" : "NOT CONNECTED") + " | " + string((obj.server) ? " Clients: " +string(ds_map_size(obj.clients)) + "\n" : " Ping: " +string(obj.ping)+ "\n");
 	
 	if (obj.server) {
 		var ckey = ds_map_find_first(obj.clients);

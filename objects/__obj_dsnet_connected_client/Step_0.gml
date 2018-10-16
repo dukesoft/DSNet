@@ -9,5 +9,16 @@ if (is_real(handshake_timer) && !handshake) {
 messageTimeout += __obj_dsnet_container.frame_time;
 if (messageTimeout*1000 > __obj_dsnet_container.network_timeout) {
 	debug_log("DSNET: Connected client timeout after " + string(__obj_dsnet_container.network_timeout) + "ms - disconnecting");
-	instance_destroy();
+	dsnet_server_client_disconnect(id, "Connection timeout to server");
+	//instance_destroy();
+}
+
+pingTimer += __obj_dsnet_container.frame_time;
+if (pingTimer > __obj_dsnet_container.ping_time) {
+	//Send a ping request
+	lastPingRequest = get_timer();
+	var b = __dsnet_create_packet(dsnet_msg.s_ping);
+	buffer_write(b, buffer_u16, round(clamp(ping, 0, 65535))); //Write the current ping. Clamp to u16 limit, just in case.
+	dsnet_send();
+	pingTimer = 0;
 }

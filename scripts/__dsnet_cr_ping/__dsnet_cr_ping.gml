@@ -1,4 +1,8 @@
 ///@param buffer
 var buffer = argument0;
-var serverDelta = buffer_read(buffer, buffer_string);
-//clientSendPing(serverDelta);
+
+ping = buffer_read(buffer, buffer_u16);
+
+//Send back our answer
+var b = __dsnet_create_packet(dsnet_msg.c_ping);
+dsnet_send();

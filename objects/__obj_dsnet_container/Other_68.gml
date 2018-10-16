@@ -112,7 +112,7 @@ switch (type) {
 				//No handshake happened yet, we expect the first few bytes to be an internal handshake request
 				if (mtype != 0 || (mid != dsnet_msg.c_ready_for_handshake && mid != dsnet_msg.c_handshake_answer)) {
 					if (debug) debug_log("DSNET: Unexpected handshake - closing connection");
-					return instance_destroy();
+					return instance_destroy(obj);
 				}
 			}
 			
@@ -120,6 +120,7 @@ switch (type) {
 			with (executeOn) {
 				script_execute(handler, buffer);
 			}
+			return 0; //Early return
 		}
 		
 		if (obj.object_index == __obj_dsnet_client) {
@@ -127,7 +128,8 @@ switch (type) {
 			
 			with (executeOn) {
 				script_execute(handler, buffer);
-			}			
+			}
+			return 0; //Early return
 		}
 		/*
 		var msgtype = buffer_read(buffer, buffer_u8);

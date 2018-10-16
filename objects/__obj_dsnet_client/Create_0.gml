@@ -17,3 +17,5 @@ connected = false;
 parent = noone;
 
 messageTimeout = 0;
+
+ping = 0;

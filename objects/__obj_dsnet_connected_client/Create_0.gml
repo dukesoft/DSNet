@@ -1,5 +1,6 @@
 ip = undefined;
 ping = 0;
+pingTimer = 0;
 websocket = false;
 handshake = false;
 handshake_challenge = undefined;
