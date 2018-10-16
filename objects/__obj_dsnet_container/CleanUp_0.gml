@@ -1,3 +1,2 @@
-instance_destroy(__obj_dsnet_server);
-instance_destroy(__obj_dsnet_client);
+show_debug_message("Destroying socket handles on container");
 ds_map_destroy(socketHandles);
