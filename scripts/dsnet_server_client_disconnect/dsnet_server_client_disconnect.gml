@@ -11,12 +11,14 @@ if (!instance_exists(connected_client)) {
 
 with (connected_client) {
 	//Send one last packet - being that we will disconnect
-	var b = __dsnet_create_packet(dsnet_msg.s_disconnect);
-	buffer_write(b, buffer_string, reason);
-	dsnet_send();
+	if (socket != undefined) {
+		var b = __dsnet_create_packet(dsnet_msg.s_disconnect);
+		buffer_write(b, buffer_string, reason);
+		dsnet_send();
 	
-	network_destroy(socket);
-	ds_map_delete(parent.clients, socket);
+		network_destroy(socket);
+		ds_map_delete(parent.clients, socket);
+	}
 	if __obj_dsnet_container.debug debug_log("DSNET: Disconnected socket and destroyed instance");
 	instance_destroy(id, false);
 }

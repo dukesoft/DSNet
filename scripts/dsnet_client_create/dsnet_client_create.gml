@@ -1,6 +1,7 @@
 ///@param ip
 ///@param port
 
+///@param function_onConnect
 ///@param function_onDisconnect
 ///@param function_onData
 
@@ -13,8 +14,9 @@ with (instance) {
 	
 	parent = other.id;
 	
-	func_disconnect = argument2;
-	func_data = argument3;
+	func_connect = argument2;
+	func_disconnect = argument3;
+	func_data = argument4;
 	
 	connected = false;
 	

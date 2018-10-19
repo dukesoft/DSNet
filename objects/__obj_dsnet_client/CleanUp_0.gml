@@ -1,3 +1,4 @@
+///On clean we free memory we reserved
 if (!is_undefined(socket)) {
 	network_destroy(socket);
 }

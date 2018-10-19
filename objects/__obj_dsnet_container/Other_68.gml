@@ -50,9 +50,7 @@ switch (type) {
 				connected_client.handshake_timer = other.handshake_timeout;
 				ds_map_add(clients, socket, connected_client);
 			} else {
-				//Happening in a connected client
-				connected = true;
-				
+				//Happening in a real client
 				//We send the fact that we're ready for the handshake
 				__dsnet_create_packet(dsnet_msg.c_ready_for_handshake);
 				dsnet_send();
@@ -61,6 +59,16 @@ switch (type) {
         break;
     case network_type_disconnect:
 		var socket = async_load[? "socket"];
+		
+		with (obj) {
+			if (server) {
+				if (other.debug) debug_log("DSNET: Server received disconnect from client");
+				return instance_destroy(clients[? socket]);
+			} else {
+				if (other.debug) debug_log("DSNET: Client received disconnect");
+				return instance_destroy();
+			}
+		}
 		
 		/*
 		with (obj.parent) {

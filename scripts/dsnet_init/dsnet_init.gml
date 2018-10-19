@@ -6,6 +6,7 @@ enum dsnet_msg {
 	c_handshake_answer,
 	c_ready_for_handshake,
 	s_disconnect,
+	s_welcome,
 }
 
 instance_create_depth(0, 0, 0, __obj_dsnet_container);
@@ -19,6 +20,7 @@ __dsnet_msghandle(dsnet_msg.c_ping, __dsnet_sr_ping);
 __dsnet_msghandle(dsnet_msg.c_ready_for_handshake, __dsnet_sr_handshake_ready);
 __dsnet_msghandle(dsnet_msg.s_handshake_challenge, __dsnet_cr_handshake_challenge);
 __dsnet_msghandle(dsnet_msg.c_handshake_answer, __dsnet_sr_handshake_answer);
+__dsnet_msghandle(dsnet_msg.s_welcome, __dsnet_cr_welcome);
 
 /*
 
@@ -26,4 +28,4 @@ __dsnet_msghandle(dsnet_msg.c_handshake_answer, __dsnet_sr_handshake_answer);
 __dsnet_msghandle(dsnet_msg.c_ready_for_handshake, __dsnet_sr_handshake_ready);
 */
 
-room_speed = 60;
+room_speed = 2;

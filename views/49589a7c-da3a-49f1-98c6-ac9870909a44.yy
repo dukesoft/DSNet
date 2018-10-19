@@ -9,7 +9,8 @@
         "98138f87-7ca5-4936-a1b7-8e3afb9360a7",
         "d00b4286-2361-4b72-a73f-d103ef430825",
         "1a963e64-426d-4608-9c46-78140a754028",
-        "a8e7d0c5-2493-438c-9f52-6dc6ad303237"
+        "a8e7d0c5-2493-438c-9f52-6dc6ad303237",
+        "122ebbe6-6dc7-48f7-ace9-20b4ceb7f1c5"
     ],
     "filterType": "GMScript",
     "folderName": "handlers",

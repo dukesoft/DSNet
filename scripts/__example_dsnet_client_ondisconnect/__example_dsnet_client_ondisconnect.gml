@@ -1,1 +1,1 @@
-debug_log("DSNET: [CLIENT] Disconnect received");
+debug_log("[EXAMPLE GAME] [CLIENT] Disconnected!");
