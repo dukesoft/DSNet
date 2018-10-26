@@ -1,10 +1,14 @@
 let __dsnet__connections = [];
 let __dsnet__socket_counter = 0;
+
+let __dsnet_js_debug = false;
+let __dsnet_js_verbose = false;
+
 function dsnet_js_ws_supported() {
     return ("WebSocket" in window);
 }
 
-function dsnet_js_connect(host, port) {
+function dsnet_js_connect(host, port, receive_buffer) {
     if (!dsnet_js_ws_supported()) {
         alert("WebSockets are not supported by this browser.");
         return 0;
@@ -15,7 +19,10 @@ function dsnet_js_connect(host, port) {
         port: port,
         connected: false,
         ws_handle: undefined,
+        receive_buffer: receive_buffer,
+        receive_buffer_view: new Uint8Array(receive_buffer, receive_buffer.byteOffset, receive_buffer.byteLength)
     };
+
     let mySocket = __dsnet__socket_counter;
     __dsnet__socket_counter++;
 
@@ -26,18 +33,26 @@ function dsnet_js_connect(host, port) {
 
     connection.ws_handle.onopen = function() {
         connection.connected = true;
-        console.log('DSNET_WS: Connected to ' + host + ":" + port + " on socket " + mySocket);
+        if (__dsnet_js_debug) console.log('DSNET_WS: Connected to ' + host + ":" + port + " on socket " + mySocket);
         gml_Script_gmcallback_dsnet_connect(-1, -1, mySocket, connection.host);
     };
 
     connection.ws_handle.onmessage = function (evt) {
-        console.log('DSNET_WS: Received message from socket ' + mySocket + "; " + host + ":" + port + ":", evt.data);
-        //connection.ws_handle.send(evt.data);
-        gml_Script_gmcallback_dsnet_data(-1, -1, mySocket, mySocket, evt.data);
+        if (__dsnet_js_debug)console.log('DSNET_WS: Received message from socket ' + mySocket + "; " + host + ":" + port + ":", evt.data);
+        let fileReader = new FileReader();
+        fileReader.onload = function(event) {
+            let resultBuffer = event.target.result;
+            let readBuffer = new Uint8Array(resultBuffer, resultBuffer.byteOffset, resultBuffer.byteLength);
+            for (let i = 0; i < resultBuffer.byteLength; i++) {
+                connection.receive_buffer_view[i] = readBuffer[i];
+            }
+            gml_Script_gmcallback_dsnet_data(-1, -1, mySocket,mySocket,  connection.receive_buffer.byteLength);
+        };
+        fileReader.readAsArrayBuffer(evt.data);
     };
 
     connection.ws_handle.onclose = function() {
-        console.log('DSNET_WS: Connection to ' + host + ":" + port + " is lost.");
+        if (__dsnet_js_debug) console.log('DSNET_WS: Connection to ' + host + ":" + port + " is lost.");
         connection.connected = false;
         gml_Script_gmcallback_dsnet_disconnect(-1, -1, mySocket);
     };
@@ -47,21 +62,6 @@ function dsnet_js_connect(host, port) {
 
 function dsnet_js_send(socket, buffer, length) {
     let newBuffer = new Uint8Array(buffer.slice(0,length));
-    console.log("DSNET_WS: Sending: ", newBuffer);
+    if (__dsnet_js_verbose) console.log("DSNET_WS: Sending: ", newBuffer);
     __dsnet__connections[socket].ws_handle.send(newBuffer);
 }
-
-/*
-function dsnet_ws_send(connection, message) {
-    connection.ws_handle.send(message);
-}
-
-function dsnet_test_buffer(buffer) {
-    console.log(buffer);
-}
-
-function dsnet_test_callback() {
-    console.log("Js got request for callback:");
-    gmcallback_dsnet_message(-1, -1, "Is this a valid callback?");
-}
-*/

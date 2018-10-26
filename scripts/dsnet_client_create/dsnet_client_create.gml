@@ -21,7 +21,8 @@ with (instance) {
 	connected = false;
 	
 	if (__obj_dsnet_container.is_html5) {
-		socket = dsnet_js_connect(ip, port);
+		receive_buffer = buffer_create(1500, buffer_fast, 1);
+		socket = dsnet_js_connect(ip, port, buffer_get_address(receive_buffer));
 		if __obj_dsnet_container.debug debug_log("DSNET: Starting WS connection to " + string(ip) + ":" + string(port) + " Socket: " + string(socket));
 	} else {
 		socket = network_create_socket(network_socket_tcp);

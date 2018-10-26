@@ -14,5 +14,5 @@ if (answer == script_execute(__obj_dsnet_container.handshake_validation_method, 
 	return;
 }
 
-if (__obj_dsnet_container.debug) debug_log("DSNET: Handshake failed - wrong answer.");
+if (__obj_dsnet_container.debug) debug_log("DSNET: Handshake failed - wrong answer (received "+string(answer)+", expected "+string(script_execute(__obj_dsnet_container.handshake_validation_method, handshake_challenge))+").");
 instance_destroy(); //disconnect the client

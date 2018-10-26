@@ -72,6 +72,11 @@ switch (type) {
     case network_type_data:
 		var minSize = 1 + buffer_datatype_size(custom_id_buffer_type); //1 byte for first id
 		
+		if (buffer == undefined) {
+			buffer = obj.receive_buffer;
+			buffer_seek(buffer, buffer_seek_start, 0);
+		}
+		
 		if (obj.websocket) {
 			minSize += 2; //Need at least 2 header bytes for websocket
 		}
@@ -118,7 +123,6 @@ switch (type) {
 			} else if (payload_len == 127) { //Payload length is 8 bytes
 				payload_len = buffer_read(buffer, buffer_u64);
 			}
-			show_debug_message("payload_len: " + string(payload_len));
 			
 			var mask;
 			mask[0] = buffer_read(buffer, buffer_u8); //Mask is built up of a u32, 
@@ -126,8 +130,7 @@ switch (type) {
 			mask[2] = buffer_read(buffer, buffer_u8); // bytes to bytes, so we'll store
 			mask[3] = buffer_read(buffer, buffer_u8); // it in an array for easy access
 			
-			show_debug_message("mask: " + string(mask));
-			var newBuffer = buffer_create(payload_len, buffer_fast, 1);
+			var newBuffer = buffer_create(payload_len, buffer_fixed, 1);
 			for (var i = 0; i < payload_len; i++) {
 				buffer_write(newBuffer, buffer_u8, buffer_read(buffer, buffer_u8) ^ mask[i%4]); //Unmask the payload into a new buffer, so we can read that as we like
 			}
@@ -167,7 +170,8 @@ switch (type) {
 
 			if (debug) debug_log("DSNET: [" + object_get_name(obj.object_index) + "] Received a valid Websocket connection!");
 			with (obj) {
-				handshake_timer += 1; //5 extra second time
+				ws_buffer = buffer_create(1532, buffer_fixed, 1); //Create the buffer for this client object
+				handshake_timer += 1; //Add some extra time to the handshake timeout
 				websocket = true;
 				var hsLength = string_length(websocketHandshake);
 				var tempBuffer = buffer_create(hsLength+1, buffer_fixed, 1);
@@ -213,6 +217,7 @@ switch (type) {
 		}
 		
 		if (obj.object_index == __obj_dsnet_client) {
+			obj.messageTimeout = 0;
 			with (executeOn) {
 				script_execute(handler, buffer);
 			}
