@@ -42,14 +42,14 @@
                     "mvc": "1.0",
                     "argCount": 0,
                     "args": [
-                        1,
-                        1
+                        2,
+                        2
                     ],
-                    "externalName": "dsnet_js_send_buffer",
-                    "help": "dsnet_js_send_buffer(socket, buffer)",
+                    "externalName": "dsnet_js_send",
+                    "help": "dsnet_js_send(socket, buffer)",
                     "hidden": false,
                     "kind": 5,
-                    "name": "dsnet_js_send_buffer",
+                    "name": "dsnet_js_send",
                     "returnType": 1
                 },
                 {
@@ -58,7 +58,7 @@
                     "mvc": "1.0",
                     "argCount": 0,
                     "args": [
-                        1,
+                        2,
                         2
                     ],
                     "externalName": "dsnet_js_connect",

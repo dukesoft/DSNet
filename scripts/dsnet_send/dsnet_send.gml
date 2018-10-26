@@ -5,7 +5,11 @@ if (__obj_dsnet_container.debug) {
 	}
 }
 
-network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
+if (__obj_dsnet_container.is_html5) {
+	dsnet_js_send(socket, send_buffer);
+} else {
+	network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
+}
 
 //if (object_index
 

@@ -21,11 +21,11 @@ with (instance) {
 	connected = false;
 	
 	if (__obj_dsnet_container.is_html5) {
-		if __obj_dsnet_container.debug debug_log("DSNET: Starting WS connection to " + string(ip) + ":" + string(port));
 		socket = dsnet_js_connect(ip, port);
+		if __obj_dsnet_container.debug debug_log("DSNET: Starting WS connection to " + string(ip) + ":" + string(port) + " Socket: " + string(socket));
 	} else {
-		if __obj_dsnet_container.debug debug_log("DSNET: Starting TCP connection to " + string(ip) + ":" + string(port));
 		socket = network_create_socket(network_socket_tcp);
+		if __obj_dsnet_container.debug debug_log("DSNET: Starting TCP connection to " + string(ip) + ":" + string(port) + " Socket: " + string(socket));
 		network_set_timeout(socket, __obj_dsnet_container.network_timeout, __obj_dsnet_container.network_timeout);
 		var result = network_connect_raw(socket, ip, port);
 	}

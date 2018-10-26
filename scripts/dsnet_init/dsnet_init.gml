@@ -28,4 +28,4 @@ __dsnet_msghandle(dsnet_msg.c_handshake_answer, __dsnet_sr_handshake_answer);
 __dsnet_msghandle(dsnet_msg.c_ready_for_handshake, __dsnet_sr_handshake_ready);
 */
 
-room_speed = 2;
+room_speed = 15;
