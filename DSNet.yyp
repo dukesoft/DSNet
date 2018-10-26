@@ -95,6 +95,14 @@
             }
         },
         {
+            "Key": "0eddae6d-8a62-4a88-a956-516502e12fbc",
+            "Value": {
+                "id": "f798f295-e67b-43d6-966a-536bb5459c43",
+                "resourcePath": "scripts\\bit_from_byte\\bit_from_byte.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "122ebbe6-6dc7-48f7-ace9-20b4ceb7f1c5",
             "Value": {
                 "id": "a0ff337d-db6f-4f2d-8d38-a59e5ab39657",
@@ -978,6 +986,7 @@
         "283737ff-c722-470d-bc24-fe35c5ca85a8",
         "f5bdd816-a281-425d-a660-9657bab70aa5",
         "b5abed5b-e618-4eb6-98e9-91211e40846d",
+        "6b195111-b8d0-4737-b45a-05f893615a50",
         "35817adf-e3f7-4959-a31b-631601faa6f2",
         "0ca0a3a1-3308-44f8-8d32-d938729eb6ac",
         "4f5dada1-24e9-4d49-80c8-e238d75b4395",
@@ -988,7 +997,6 @@
         "a8e7d0c5-2493-438c-9f52-6dc6ad303237",
         "122ebbe6-6dc7-48f7-ace9-20b4ceb7f1c5",
         "7e960f90-6bbe-4307-8914-fd91fc67e9a3",
-        "6b195111-b8d0-4737-b45a-05f893615a50",
         "b1935eef-ec05-4456-a561-f2f4440970d4",
         "c830c9bd-7bc2-4eb7-b463-a725a269cd84",
         "5251098f-2f25-428a-a89e-bcd92bcd68ad",
@@ -1016,7 +1024,8 @@
         "e9331adc-6ebd-4bc4-ad3a-75bc67cfd343",
         "f545d6d2-4678-4466-9240-7afc9d0e10b1",
         "1c84b57f-8aa2-433c-89bc-5c80933b137e",
-        "d91ca14d-be5c-4c7b-8067-9af7f7f37596"
+        "d91ca14d-be5c-4c7b-8067-9af7f7f37596",
+        "0eddae6d-8a62-4a88-a956-516502e12fbc"
     ],
     "tutorial": ""
 }

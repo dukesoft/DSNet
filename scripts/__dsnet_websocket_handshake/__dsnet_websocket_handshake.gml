@@ -2,7 +2,6 @@ if (live_call(argument0)) return live_result;
 ///@param request
 ///@description This validates a string to be a valid websocket handshake, and if it is, returns the response. Otherwise returns false.
 var response = argument0;
-show_debug_message(response);
 requestSet = string_explode("\r\n", response);
 
 /*

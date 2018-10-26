@@ -6,9 +6,18 @@ if (__obj_dsnet_container.debug) {
 }
 
 if (__obj_dsnet_container.is_html5) {
-	dsnet_js_send(socket, send_buffer);
+	dsnet_js_send(socket, buffer_get_address(send_buffer), buffer_tell(send_buffer));
 } else {
-	network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
+	if (websocket) { //If the client is a websocket, we have to wrap the buffer in 0x00 ... 0xFF
+		buffer_seek(ws_buffer, buffer_seek_start, 0);
+		buffer_write(ws_buffer, buffer_u8, 0); //0x00
+		buffer_copy(send_buffer, 0, buffer_tell(send_buffer), ws_buffer, 1);
+		buffer_seek(ws_buffer, buffer_seek_relative, buffer_tell(send_buffer));
+		buffer_write(ws_buffer, buffer_u8, 255); //0xFF
+		network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
+	} else {
+		network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
+	}
 }
 
 //if (object_index

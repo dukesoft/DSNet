@@ -45,8 +45,10 @@ function dsnet_js_connect(host, port) {
     return mySocket;
 }
 
-function dsnet_js_send(socket, buffer) {
-    __dsnet__connections[socket].ws_handle.send(buffer);
+function dsnet_js_send(socket, buffer, length) {
+    let newBuffer = new Uint8Array(buffer.slice(0,length));
+    console.log("DSNET_WS: Sending: ", newBuffer);
+    __dsnet__connections[socket].ws_handle.send(newBuffer);
 }
 
 /*
