@@ -243,4 +243,4 @@ switch (type) {
         break;
 }
 
-show_debug_message("AS5");
+show_debug_message("AS");
