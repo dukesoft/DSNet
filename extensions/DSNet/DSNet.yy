@@ -50,7 +50,7 @@
                     "hidden": false,
                     "kind": 5,
                     "name": "dsnet_js_send",
-                    "returnType": 1
+                    "returnType": 2
                 },
                 {
                     "id": "38a32fd7-d53c-4266-a5ce-27fa7f2b9ebc",
@@ -66,7 +66,7 @@
                     "hidden": false,
                     "kind": 5,
                     "name": "dsnet_js_connect",
-                    "returnType": 1
+                    "returnType": 2
                 },
                 {
                     "id": "7873782a-be4f-4411-af9c-b778cde8e06a",
@@ -82,6 +82,21 @@
                     "kind": 5,
                     "name": "dsnet_js_ws_supported",
                     "returnType": 2
+                },
+                {
+                    "id": "12623c96-43ad-4d58-8705-00b0019022d9",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        2
+                    ],
+                    "externalName": "dsnet_js_disconnect",
+                    "help": "dsnet_js_disconnect(socket)",
+                    "hidden": false,
+                    "kind": 5,
+                    "name": "dsnet_js_disconnect",
+                    "returnType": 2
                 }
             ],
             "init": "",
@@ -89,7 +104,8 @@
             "order": [
                 "41876f13-0783-4568-ad9e-2000b1194248",
                 "38a32fd7-d53c-4266-a5ce-27fa7f2b9ebc",
-                "7873782a-be4f-4411-af9c-b778cde8e06a"
+                "7873782a-be4f-4411-af9c-b778cde8e06a",
+                "12623c96-43ad-4d58-8705-00b0019022d9"
             ],
             "origname": "",
             "uncompress": false

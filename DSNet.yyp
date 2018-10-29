@@ -63,14 +63,6 @@
             }
         },
         {
-            "Key": "0b047b7f-be92-4883-b98f-1cd3028de1c0",
-            "Value": {
-                "id": "936a05e3-1f26-4338-b253-30ec00e09e5b",
-                "resourcePath": "scripts\\gmcallback_dsnet_message\\gmcallback_dsnet_message.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "0ca0a3a1-3308-44f8-8d32-d938729eb6ac",
             "Value": {
                 "id": "85b991e9-eb21-493c-a6d5-f858f3c0694e",
@@ -981,7 +973,6 @@
         "97d5ab13-2195-4d53-800f-f506e8efe44c",
         "7fdec26a-a613-4634-8327-702177d8c7c8",
         "f3aeb928-a456-495c-8033-ab99e30d7e30",
-        "0b047b7f-be92-4883-b98f-1cd3028de1c0",
         "766e8b42-94a8-4633-b73a-0ecadf5dc1a9",
         "283737ff-c722-470d-bc24-fe35c5ca85a8",
         "f5bdd816-a281-425d-a660-9657bab70aa5",

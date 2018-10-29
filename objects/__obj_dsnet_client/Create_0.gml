@@ -1,5 +1,5 @@
 server = false;
-
+websocket = false;
 send_buffer = buffer_create(1500, buffer_fixed, 1);
 clients = ds_map_create();
 

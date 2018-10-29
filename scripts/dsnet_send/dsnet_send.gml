@@ -8,7 +8,7 @@ if (__obj_dsnet_container.debug) {
 if (__obj_dsnet_container.is_html5) {
 	dsnet_js_send(socket, buffer_get_address(send_buffer), buffer_tell(send_buffer));
 } else {
-	if (websocket) { //If the client is a websocket, we have to wrap the buffer in 0x00 ... 0xFF
+	if (websocket) { //If the client is a websocket, we have to add a websocket header to the packet
 		buffer_seek(ws_buffer, buffer_seek_start, 0);
 		
 		//Write the websocket header 
@@ -37,21 +37,3 @@ if (__obj_dsnet_container.is_html5) {
 		network_send_raw(socket, send_buffer, buffer_tell(send_buffer));
 	}
 }
-
-//if (object_index
-
-/*
-if (object_index == __obj_dsnet_connected_client) {
-	network_send_raw(socket, dsnet_send_buffer, buffer_tell(dsnet_send_buffer));
-}
-
-if (object_index == __obj_dsnet_client) {
-	network_send_raw(socket, dsnet_send_buffer, buffer_tell(dsnet_send_buffer));
-}
-*/
-
-//if (os_browser == browser_not_a_browser) {
-	
-//} else {
-//	dsnet_js_send_buffer(socket, buffer_get_address(dsnet_send_buffer));
-//}

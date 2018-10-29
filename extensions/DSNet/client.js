@@ -60,6 +60,11 @@ function dsnet_js_connect(host, port, receive_buffer) {
     return mySocket;
 }
 
+function dsnet_js_disconnect(socket) {
+    if (__dsnet_js_debug) console.log("DSNET_WS: Disconnecting socket " + socket);
+    __dsnet__connections[socket].ws_handle.close();
+}
+
 function dsnet_js_send(socket, buffer, length) {
     let newBuffer = new Uint8Array(buffer.slice(0,length));
     if (__dsnet_js_verbose) console.log("DSNET_WS: Sending: ", newBuffer);

@@ -19,9 +19,9 @@ if (obj == undefined) {
 
 if (verbose) {
 	if (obj != undefined) {
-		debug_log("Socket #" + string(inboundSocket) + " is bound to " + object_get_name(obj.object_index));
+		debug_log("DSNET: Socket #" + string(inboundSocket) + " is bound to " + object_get_name(obj.object_index));
 	} else {
-		debug_log("Socket #" + string(inboundSocket) + " is not bound to an object.");
+		debug_log("DSNET: Socket #" + string(inboundSocket) + " is not bound to an object.");
 	}	
 }
 
