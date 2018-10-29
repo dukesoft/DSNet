@@ -16,3 +16,5 @@ connected = false;
 parent = noone;
 
 cleanedUp = false;
+
+send_buffer = buffer_create(1500, buffer_fixed, 1);

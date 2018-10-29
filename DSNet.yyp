@@ -210,7 +210,7 @@
             "Key": "2d09f9c0-2007-4e9e-bd1d-b5eb37621e07",
             "Value": {
                 "id": "74ec9ccc-d59d-4591-801f-6a4cb0651e4f",
-                "resourcePath": "scripts\\dsnet_server_client_disconnect\\dsnet_server_client_disconnect.yy",
+                "resourcePath": "scripts\\dsnet_server_client_destroy\\dsnet_server_client_destroy.yy",
                 "resourceType": "GMScript"
             }
         },

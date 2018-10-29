@@ -4,8 +4,8 @@
 var connected_client = argument0;
 var reason = argument1;
 
-if (!instance_exists(connected_client)) {
-	if __obj_dsnet_container.debug debug_log("DSNET: dsnet_server_client_disconnect("+string(connected_client)+") failed, instance not found.");
+if (!instance_exists(argument0) || argument0.object_index != __obj_dsnet_connected_client) {
+	if (__obj_dsnet_container.debug) debug_log("DSNET: " + string(argument0) + " is not a valid connected client.");
 	return false;
 }
 
@@ -15,8 +15,7 @@ with (connected_client) {
 		var b = __dsnet_create_packet(dsnet_msg.s_disconnect);
 		buffer_write(b, buffer_string, reason);
 		dsnet_send();
-	
-		network_destroy(socket);
+
 		ds_map_delete(parent.clients, socket);
 	}
 	if __obj_dsnet_container.debug debug_log("DSNET: Disconnected socket and destroyed instance");

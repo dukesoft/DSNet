@@ -10,7 +10,7 @@ if (is_real(handshake_timer) && !handshake) {
 messageTimeout += __obj_dsnet_container.frame_time;
 if (messageTimeout*1000 > __obj_dsnet_container.network_timeout) {
 	debug_log("DSNET: Connected client timeout after " + string(__obj_dsnet_container.network_timeout) + "ms - disconnecting");
-	dsnet_server_client_disconnect(id, "Connection timeout to server");
+	dsnet_server_client_destroy(id, "Connection timeout to server");
 	return 0;
 }
 

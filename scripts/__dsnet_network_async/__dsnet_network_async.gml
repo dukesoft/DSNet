@@ -16,18 +16,18 @@ var buffer = argument4;
 var size = argument5;
 
 var p = noone;
-
+show_debug_message("AS1");
 if (verbose) {
 	debug_log("DSNET: Network event (" + netevent_to_string(type) + ") for socket " + string(inboundSocket));
 }
-
+show_debug_message("AS2");
 var obj = __dsnet_get_handling_object_for_socket(inboundSocket);
-
+show_debug_message("AS3");
 if (obj == undefined) {
 	if debug debug_log("DSNET: Socket handler for socket " + string(inboundSocket) + " not found!");
 	return 0;
 }
-
+show_debug_message("AS4");
 switch (type) {
     case network_type_connect:
 	case network_type_non_blocking_connect:
@@ -242,3 +242,5 @@ switch (type) {
 		//script_execute(dsnet_reference_data, socket, buffer, size);
         break;
 }
+
+show_debug_message("AS5");
