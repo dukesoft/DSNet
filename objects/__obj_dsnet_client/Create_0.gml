@@ -19,3 +19,5 @@ parent = noone;
 messageTimeout = 0;
 
 ping = 0;
+
+cleanedUp = false

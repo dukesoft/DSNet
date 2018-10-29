@@ -14,3 +14,5 @@ server_socket = undefined;
 connected = false;
 
 parent = noone;
+
+cleanedUp = false;

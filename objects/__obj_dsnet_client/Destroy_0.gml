@@ -1,5 +1,4 @@
 ///On destroy we clean up anything that links to us
-show_debug_message("Destroy event fired");
 if (connected) {
 	with (parent) {
 		script_execute(other.func_disconnect);
@@ -9,4 +8,8 @@ if (connected) {
 if (!is_undefined(socket)) {
 	ds_map_delete(__obj_dsnet_container.socketHandles, socket);	
 }
-show_debug_message("Destroy event done");
+
+if (__obj_dsnet_container.is_html5 && !cleanedUp) {
+    cleanedUp = true;
+	event_user(0);
+}
