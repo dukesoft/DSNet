@@ -15,8 +15,10 @@ with (connected_client) {
 		var b = __dsnet_create_packet(dsnet_msg.s_disconnect);
 		buffer_write(b, buffer_string, reason);
 		dsnet_send();
-
-		ds_map_delete(parent.clients, socket);
+		
+		if (instance_exists(parent)) { //Might be that the upper body has already left us in the void of cyberspace
+		    ds_map_delete(parent.clients, socket);
+		}
 	}
 	if __obj_dsnet_container.debug debug_log("DSNET: Disconnected socket and destroyed instance");
 	instance_destroy(id, false);
