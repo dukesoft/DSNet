@@ -1,4 +1,5 @@
 is_html5 = (os_browser != browser_not_a_browser);
+draw_debug = true;
 debug = true;
 verbose = true;
 network_timeout = 10 * 1000; //10 seconds

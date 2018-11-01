@@ -7,8 +7,8 @@ while (strlen > 0 && string_char_at(str, 0) == " ") {
 	strlen -= 1;
 }
 
-while (strlen > 0 && string_char_at(str, strlen-1) == " ") {
-	str = string_copy(str, 0, strlen-2);
+while (strlen > 0 && string_char_at(str, strlen) == " ") {
+	str = string_copy(str, 0, strlen-1);
 	strlen -= 1;
 }
 

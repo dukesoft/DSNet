@@ -1,5 +1,5 @@
 {
-    "id": "0eddae6d-8a62-4a88-a956-516502e12fbc",
+    "id": "848d5b5d-2c08-427c-b350-5efa41453fde",
     "modelName": "GMScript",
     "mvc": "1.0",
     "name": "bit_from_byte",

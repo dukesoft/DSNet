@@ -16,18 +16,14 @@ var buffer = argument4;
 var size = argument5;
 
 var p = noone;
-show_debug_message("AS1");
 if (verbose) {
 	debug_log("DSNET: Network event (" + netevent_to_string(type) + ") for socket " + string(inboundSocket));
 }
-show_debug_message("AS2");
 var obj = __dsnet_get_handling_object_for_socket(inboundSocket);
-show_debug_message("AS3");
 if (obj == undefined) {
 	if debug debug_log("DSNET: Socket handler for socket " + string(inboundSocket) + " not found!");
 	return 0;
 }
-show_debug_message("AS4");
 switch (type) {
     case network_type_connect:
 	case network_type_non_blocking_connect:
@@ -62,15 +58,9 @@ switch (type) {
 			}
 		}
 		
-		/*
-		with (obj.parent) {
-			script_execute(obj.func_disconnect, socket);
-		}
-		*/
-		//script_execute(dsnet_reference_disconnect, socket);
         break;
     case network_type_data:
-		var minSize = 1 + buffer_datatype_size(custom_id_buffer_type); //1 byte for first id
+		var minSize = 1 + buffer_sizeof(custom_id_buffer_type); //1 byte for first id
 		
 		if (buffer == undefined) {
 			buffer = obj.receive_buffer;
@@ -91,7 +81,6 @@ switch (type) {
 			var h1 = buffer_read(buffer, buffer_u8);
 
 			var fin = (h1 & 0x80) != 0;
-			//show_debug_message("FIN: " + string(fin));
 			if (!fin) {
 				if (verbose) debug_log("DSNET: Framed WS messages are currently not supported.");
 				return instance_destroy(obj);
@@ -183,15 +172,6 @@ switch (type) {
 			return 0;
 		}
 
-		/*if (obj.websocket) { //DEBUG
-			buffer_seek(buffer, buffer_seek_start, 0);
-
-			//Read out the entire buffer and drop it here
-			while (buffer_tell(buffer) != buffer_get_size(buffer)) {
-			    debug_log("                              "+string(buffer_read(buffer, buffer_u8)));
-			}
-		}*/
-
 		if (verbose) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received message: " + string(mtype) + " - " + string(mid));
 
 		if (is_undefined(handler)) {
@@ -223,24 +203,6 @@ switch (type) {
 			}
 			return 0; //Early return
 		}
-		/*
-		var msgtype = buffer_read(buffer, buffer_u8);
-		var msgid = buffer_read(buffer, buffer_u16);
-		if (msgtype == 0) {
-			//Internal
-			
-		} else {
-			//Custom
-			
-		}
-		*/
-		/*
-		with (obj.parent) {
-			script_execute(obj.func_data, socket, buffer, size);
-		}
-		*/
-		//script_execute(dsnet_reference_data, socket, buffer, size);
+
         break;
 }
-
-show_debug_message("AS");

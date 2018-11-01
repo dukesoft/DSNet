@@ -1,5 +1,5 @@
 {
-    "id": "1c84b57f-8aa2-433c-89bc-5c80933b137e",
+    "id": "efc2afd5-41de-4c26-a080-67a0882644cf",
     "modelName": "GMScript",
     "mvc": "1.0",
     "name": "extract_header_from_string",

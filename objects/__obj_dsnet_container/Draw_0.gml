@@ -1,4 +1,4 @@
-if (!debug) {
+if (!draw_debug) {
 	return;
 }
 

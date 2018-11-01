@@ -13,7 +13,8 @@
         "df561fed-839a-42a6-8530-34d6e380d5eb",
         "ee768534-4407-405d-b899-e78e9b42b9de",
         "9dde42f5-633d-4d4d-bc86-b746e66381db",
-        "838c81f0-0e12-4c17-aff6-628afb401ec8"
+        "838c81f0-0e12-4c17-aff6-628afb401ec8",
+        "3e6d6aa1-48d2-476e-9b40-4d45af977ab4"
     ],
     "filterType": "GMScript",
     "folderName": "stringfunctions",

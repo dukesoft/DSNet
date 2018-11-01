@@ -1,8 +1,8 @@
 {
-    "id": "d81b1de3-9a7b-4333-89c3-5a461364a681",
+    "id": "7d014f43-88b5-43be-b2b0-255c076a91db",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "buffer_datatype_size",
+    "name": "dsnet_draw_debug",
     "IsCompatibility": false,
     "IsDnD": false
 }
