@@ -22,5 +22,3 @@ messageMap_internal = ds_map_create();
 messageMap = ds_map_create();
 
 handshake_validation_method = __dsnet_default_handshake;
-
-cleanedUp = false

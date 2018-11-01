@@ -14,7 +14,3 @@ if (!is_undefined(server_socket)) {
 	ds_map_delete(__obj_dsnet_container.socketHandles, server_socket);
 }
 show_debug_message("D3");
-if (__obj_dsnet_container.is_html5 && !cleanedUp) {
-    cleanedUp = true;
-	event_user(0);
-}

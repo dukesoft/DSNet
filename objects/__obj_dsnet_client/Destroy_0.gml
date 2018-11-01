@@ -8,8 +8,3 @@ if (connected) {
 if (!is_undefined(socket)) {
 	ds_map_delete(__obj_dsnet_container.socketHandles, socket);	
 }
-
-if (__obj_dsnet_container.is_html5 && !cleanedUp) {
-    cleanedUp = true;
-	event_user(0);
-}

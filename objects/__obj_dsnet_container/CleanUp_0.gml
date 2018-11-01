@@ -1,1 +1,1 @@
-event_user(0);
+ds_map_destroy(socketHandles);
