@@ -1,0 +1,1 @@
+debug_log("[EXAMPLE] [SERVER] [CLIENT] Connected client destroyed!");

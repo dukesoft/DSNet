@@ -59,6 +59,7 @@ switch (type) {
 		
         break;
     case network_type_data:
+		#region Basic packet checks
 		var minSize = 1 + buffer_sizeof(custom_id_buffer_type); //1 byte for first id
 		
 		if (buffer == undefined) {
@@ -74,9 +75,10 @@ switch (type) {
 			//Discard! All packets should be bigger than 1 byte (internal identifier) + 2 bytes (custom identifier)
 			return 0;
 		}
+		#endregion
 		
+		#region Decode a websocket packet, if it is one
 		if (obj.websocket) {
-		    //Read the websocket header
 			var h1 = buffer_read(buffer, buffer_u8);
 
 			var fin = (h1 & 0x80) != 0;
@@ -125,7 +127,9 @@ switch (type) {
 			buffer_seek(newBuffer, buffer_seek_start, 0);
 			buffer = newBuffer;
 		}
+		#endregion
 		
+		#region Decode the packet and see where to send it
 		var mtype = buffer_read(buffer, buffer_u8);
 		var mid = buffer_read(buffer, custom_id_buffer_type);
 
@@ -142,7 +146,9 @@ switch (type) {
 				executeOn = obj.parent;
 				break;
 		}
+		#endregion
 		
+		#region Handshake logic
 		if (obj.object_index == __obj_dsnet_connected_client && obj.handshake == false && obj.websocket == false && executeOn == undefined && handler == undefined) {
 			buffer_seek(buffer, buffer_seek_start, 0);
 			var headerString = "";
@@ -166,17 +172,12 @@ switch (type) {
 				var tempBuffer = buffer_create(hsLength, buffer_fixed, 1);
 				buffer_write(tempBuffer, buffer_text, websocketHandshake);
 				
-				/*
-				var tempBuffer = buffer_create(hsLength+1, buffer_fixed, 1);
-				buffer_write(tempBuffer, buffer_string, websocketHandshake); //GM appends a 0 byte at the end here
-				buffer_seek(tempBuffer, buffer_seek_relative, -1); //So we move the pointer back 1 byte
-				*/
-				
 				network_send_raw(obj.socket, tempBuffer, buffer_tell(tempBuffer));
 				buffer_delete(tempBuffer); //Remove it, we don't need it anymore
 			}
 			return 0;
 		}
+		#endregion
 
 		if (verbose) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received message: " + string(mtype) + " - " + string(mid));
 
