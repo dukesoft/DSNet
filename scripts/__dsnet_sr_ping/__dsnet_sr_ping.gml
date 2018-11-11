@@ -8,3 +8,6 @@ var curTimer = (get_timer() - lastPingRequest)/1000;
 curTimer -= __obj_dsnet_container.frame_time*1000;
 
 ping = curTimer;
+if (ping < 0) {
+	ping = 0;
+}

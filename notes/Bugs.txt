@@ -1,0 +1,4 @@
+Since GM won't render or do steps in the background in HTML5, but it WILL respond to the async network calls,
+the game will partially continue to run on the background - not gamecode - only networking code.
+
+Thats shit, and needs to be fixed. Either stop networking on no focus, or, best solution, continue game code while tabbed out.

@@ -10,7 +10,10 @@
         "b1935eef-ec05-4456-a561-f2f4440970d4",
         "c830c9bd-7bc2-4eb7-b463-a725a269cd84",
         "5251098f-2f25-428a-a89e-bcd92bcd68ad",
-        "58ca5677-1c32-4841-a593-68028c1a1ba0"
+        "58ca5677-1c32-4841-a593-68028c1a1ba0",
+        "345d85dd-a18f-4171-8b3b-685b42d22fdf",
+        "e49770f5-0b8f-4722-b14e-13722d12603e",
+        "53bea678-7bf8-4383-8b59-1a0916822a51"
     ],
     "filterType": "GMScript",
     "folderName": "internals",

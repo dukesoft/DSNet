@@ -1,5 +1,3 @@
-///@param socket
-///@param ip
-var socket = argument0;
-var ip = argument1;
-debug_log("DSNET: [S"+string(socket)+"] Connection received from " + string(ip));
+///@param dsnet_connected_client
+var dsnet_connected_client = argument0;
+debug_log("[EXAMPLE] [SERVER] Client ("+string(dsnet_connected_client)+") joined from " + string(dsnet_connected_client.ip));

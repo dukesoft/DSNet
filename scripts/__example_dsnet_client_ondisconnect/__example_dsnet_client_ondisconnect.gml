@@ -1,1 +1,1 @@
-debug_log("[EXAMPLE GAME] [CLIENT] Disconnected!");
+debug_log("[EXAMPLE] [CLIENT] Disconnected!");

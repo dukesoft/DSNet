@@ -7,3 +7,5 @@ client = dsnet_client_create(
 	__example_dsnet_client_ondisconnect,
 	__example_dsnet_client_ondata 
 );
+
+username = get_string("Please enter your username", "Username");

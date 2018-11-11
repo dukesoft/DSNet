@@ -21,6 +21,12 @@ with (connected_client) {
 		}
 	}
 	if __obj_dsnet_container.debug debug_log("DSNET: Disconnected socket and destroyed instance");
+	
+	//Trigger the connect event, all is good now
+	with (parent.parent) {
+		script_execute(other.parent.func_disconnect, other.id);
+	}
+	
 	instance_destroy(id, false);
 }
 return true;

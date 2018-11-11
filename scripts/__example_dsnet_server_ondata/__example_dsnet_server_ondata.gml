@@ -1,22 +1,14 @@
-///@param socket
+///@param dsnet_connected_client
 ///@param buffer
 ///@param size
 
-var socket = argument0;
+var dsnet_connected_client = argument0;
 var buffer = argument1;
 var size = argument2;
 
+debug_log("[EXAMPLE] [SERVER] Client ("+string(dsnet_connected_client)+") received data: " + string(size) + " bytes (minus 3 internal from DSNet)");
+
 //Read out the entire buffer and drop it here
-buffer_seek(buffer, buffer_seek_start, 0);
-
-var out = dsnet_start
-
-buffer_seek(send_buffer, buffer_seek_start, 0);
 while (buffer_tell(buffer) != size) {
-	var read = buffer_read(buffer, buffer_u8);
-	debug_log("      "+string(read));
-	//And send it back
-	//buffer_write(dsnet_send_buffer, buffer_u8, read);
+    debug_log("                              "+string(buffer_read(buffer, buffer_u8)));
 }
-
-dsnet_send(socket);

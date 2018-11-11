@@ -47,7 +47,6 @@ switch (type) {
 		}
         break;
     case network_type_disconnect:
-
 		with (obj) {
 			if (server) {
 				if (other.debug) debug_log("DSNET: Server received disconnect from client");
@@ -163,9 +162,16 @@ switch (type) {
 				handshake_timer += 1; //Add some extra time to the handshake timeout
 				websocket = true;
 				var hsLength = string_length(websocketHandshake);
+				
+				var tempBuffer = buffer_create(hsLength, buffer_fixed, 1);
+				buffer_write(tempBuffer, buffer_text, websocketHandshake);
+				
+				/*
 				var tempBuffer = buffer_create(hsLength+1, buffer_fixed, 1);
 				buffer_write(tempBuffer, buffer_string, websocketHandshake); //GM appends a 0 byte at the end here
 				buffer_seek(tempBuffer, buffer_seek_relative, -1); //So we move the pointer back 1 byte
+				*/
+				
 				network_send_raw(obj.socket, tempBuffer, buffer_tell(tempBuffer));
 				buffer_delete(tempBuffer); //Remove it, we don't need it anymore
 			}
