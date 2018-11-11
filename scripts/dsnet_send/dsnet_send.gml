@@ -1,4 +1,4 @@
-///@param [dsnet_instance] (optional)
+///@param [dsnet_instance](optional)
 
 var dsnet_instance = id;
 if (argument_count >= 1) {

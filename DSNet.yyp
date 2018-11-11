@@ -711,6 +711,14 @@
             }
         },
         {
+            "Key": "96e3df98-a8ad-4d81-93d0-7fd5e5e7a9cf",
+            "Value": {
+                "id": "ae80dab0-7960-4429-8f79-8410437a3384",
+                "resourcePath": "objects\\obj_example_dsnet_other_client\\obj_example_dsnet_other_client.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "97d5ab13-2195-4d53-800f-f506e8efe44c",
             "Value": {
                 "id": "c0e678de-b66f-4262-91e1-2a46a244680b",
@@ -859,6 +867,14 @@
             "Value": {
                 "id": "04be8d11-8344-4df3-a348-7884f9baa039",
                 "resourcePath": "views\\c57f9e94-2c9a-42ec-b4b3-b0095d5c1803.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "c783059d-8d96-42e1-abb1-47167cf6e642",
+            "Value": {
+                "id": "2c8b44de-a16e-4b7b-8515-4fc996123545",
+                "resourcePath": "views\\c783059d-8d96-42e1-abb1-47167cf6e642.yy",
                 "resourceType": "GMFolder"
             }
         },
@@ -1084,6 +1100,14 @@
                 "id": "37adcecc-47a1-4158-89e8-d1eaeeb7d859",
                 "resourcePath": "scripts\\__dsnet_websocket_digest\\__dsnet_websocket_digest.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "fd5a8801-d653-4c39-8754-1e646af2f15b",
+            "Value": {
+                "id": "6e7b1ff9-48cc-475c-8919-2806c5e294d4",
+                "resourcePath": "sprites\\spr_player\\spr_player.yy",
+                "resourceType": "GMSprite"
             }
         }
     ],

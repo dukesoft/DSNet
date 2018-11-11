@@ -1,6 +1,8 @@
 ///@param buffer
 ///@param size
 
+show_error("This should not happen!", true);
+
 var buffer = argument0;
 var size = argument1;
 

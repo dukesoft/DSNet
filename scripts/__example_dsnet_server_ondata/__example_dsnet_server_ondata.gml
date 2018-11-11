@@ -2,6 +2,8 @@
 ///@param buffer
 ///@param size
 
+show_error("This should not happen!", true);
+
 var dsnet_connected_client = argument0;
 var buffer = argument1;
 var size = argument2;
