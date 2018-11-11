@@ -5,3 +5,6 @@ if (websocket) {
 if (!is_undefined(socket)) {
 	network_destroy(socket);
 }
+if (instance_exists(subclient)) {
+	instance_destroy(subclient);
+}

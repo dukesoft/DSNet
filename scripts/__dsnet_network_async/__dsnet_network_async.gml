@@ -139,11 +139,11 @@ switch (type) {
 		switch (mtype) {
 			case 0: //internal
 				handler = messageMap_internal[? mid];
-				executeOn = obj;
+				executeOn = obj;  // [__dsnet_connected_client]
 				break;
 			case 1: //custom
 				handler = messageMap[? mid];
-				executeOn = obj.parent;
+				executeOn = obj.subclient; // [obj_example_dsnet_server_client]
 				break;
 		}
 		#endregion
