@@ -164,7 +164,7 @@ switch (type) {
 
 			if (debug) debug_log("DSNET: [" + object_get_name(obj.object_index) + "] Received a valid Websocket connection!");
 			with (obj) {
-				ws_buffer = buffer_create(1532, buffer_fixed, 1); //Create the buffer for this client object
+				ws_buffer = buffer_create(__obj_dsnet_container.packetsize + 32, buffer_fixed, 1); //Create the buffer for this client object
 				handshake_timer += 1; //Add some extra time to the handshake timeout
 				websocket = true;
 				var hsLength = string_length(websocketHandshake);

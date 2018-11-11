@@ -1,8 +1,8 @@
-///@param dsnet_instance
 ///@param msgid
-///@description write a DSNET internal message
-buffer_seek(argument0.send_buffer, buffer_seek_start, 0);
-buffer_write(argument0.send_buffer, buffer_u8, 1); // To tell DSNET its a custom message
-buffer_write(argument0.send_buffer, __obj_dsnet_container.custom_id_buffer_type, real(argument1));
+///@description write a DSNET message
 
-return argument0.send_buffer;
+var packet = buffer_create(__obj_dsnet_container.packetsize, buffer_fixed, 1);
+buffer_write(packet, buffer_u8, 1); // To tell DSNET its a custom message
+buffer_write(packet, __obj_dsnet_container.custom_id_buffer_type, real(argument0));
+
+return packet;

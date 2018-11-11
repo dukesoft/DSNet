@@ -1,4 +1,5 @@
-///@param [dsnet_instance](optional)
+///@param packet
+///@param to_dsnet_instance(optional)
 
 var dsnet_instance = id;
 if (argument_count >= 1) {
@@ -7,10 +8,14 @@ if (argument_count >= 1) {
 
 if (__obj_dsnet_container.debug) {
 	if (dsnet_instance.object_index != __obj_dsnet_connected_client && dsnet_instance.object_index != __obj_dsnet_client)	 {
-		debug_log("DSNET: Cannot call dsnet_send() on " + string(object_get_name(dsnet_instance.object_index) + " - only on __obj_dsnet_connected_client or __obj_dsnet_client"));
+		debug_log("DSNET: Cannot call dsnet_send() to " + string(object_get_name(dsnet_instance.object_index) + " - only on __obj_dsnet_connected_client or __obj_dsnet_client"));
 		return 0;
 	}
 }
+TODO -> Figure out what works best when writing packets and sending them. Remember dsnet_send() can be called multiple times, and you can send to 1 or more clients. Or just the server.
+
+Kinda depends on where you create it from.
+
 
 with (dsnet_instance) {
 	if (__obj_dsnet_container.is_html5) {

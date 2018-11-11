@@ -5,6 +5,6 @@ var buffer = argument0;
 handshake_challenge = string(random_range(100000000, 999999999)) + string(get_timer());
 					
 //And send it back to the client
-var b = __dsnet_create_packet(dsnet_msg.s_handshake_challenge);
-buffer_write(b, buffer_string, handshake_challenge);
-dsnet_send();
+var packet = __dsnet_create_packet(dsnet_msg.s_handshake_challenge);
+buffer_write(packet, buffer_string, handshake_challenge);
+dsnet_send(packet);

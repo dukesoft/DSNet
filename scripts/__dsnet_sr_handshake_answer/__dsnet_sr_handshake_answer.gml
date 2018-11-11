@@ -8,8 +8,8 @@ if (answer == script_execute(__obj_dsnet_container.handshake_validation_method, 
 	handshake_timer = undefined;
 	
 	//Send back a welcome message
-	__dsnet_create_packet(dsnet_msg.s_welcome);
-	dsnet_send();
+	var packet = __dsnet_create_packet(dsnet_msg.s_welcome);
+	dsnet_send(packet);
 	
 	//Create a connected client for the server using DSNET
 	subclient = instance_create_depth(0, 0, 0, parent.connected_client_object);
