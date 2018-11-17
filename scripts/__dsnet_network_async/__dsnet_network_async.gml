@@ -8,12 +8,14 @@
 
 ///Handle all networking
 // since the async event is triggered EVERYWHERE in EVERY object, this sends it to the proper ones
+show_debug_message("               FUNCTION CALL START");
 var inboundSocket = argument0;
 var type = argument1;
 var socket = argument2;
 var ip = argument3;
 var buffer = argument4;
 var size = argument5;
+show_debug_message("               IN FUNCTION PARAM "+string(inboundSocket) + "[type: "+string(type)+", socket:"+string(socket)+", ip:"+string(ip)+", buffer:"+string(buffer)+", size:"+string(size)+"]");
 
 var p = noone;
 if (verbose) {
@@ -50,10 +52,12 @@ switch (type) {
 		with (obj) {
 			if (server) {
 				if (other.debug) debug_log("DSNET: Server received disconnect from client");
-				return instance_destroy(clients[? socket]);
+				instance_destroy(clients[? socket]);
+				return 0;
 			} else {
 				if (other.debug) debug_log("DSNET: Client received disconnect");
-				return instance_destroy();
+				instance_destroy();
+				return 0;
 			}
 		}
 		
@@ -84,19 +88,22 @@ switch (type) {
 			var fin = (h1 & 0x80) != 0;
 			if (!fin) {
 				if (verbose) debug_log("DSNET: Framed WS messages are currently not supported.");
-				return instance_destroy(obj);
+				instance_destroy(obj);
+				return 0;
 			}
 			
 			var opcode = h1 & 0x0F; //Lower 4 bits
 			if (opcode == 0x08) { 
 				//Connection termination
 				if (verbose) debug_log("DSNET: Received disconnect opcode.");
-				return instance_destroy(obj);
+				instance_destroy(obj);
+				return 0;
 			}
 			
 			if (opcode != 0x02) { //Opcode 0x02 = Binary
 				if (verbose) debug_log("DSNET: Only binary WS frames are supported.");
-				return instance_destroy(obj);
+				instance_destroy(obj);
+				return 0;
 			}
 			
 			var h2 = buffer_read(buffer, buffer_u8);
@@ -104,7 +111,8 @@ switch (type) {
 			var masked = (h1 & 0x80) != 0;
 			if (!masked) {
 				if (verbose) debug_log("DSNET: Non-masked messages are not supported.");
-				return instance_destroy(obj);
+				instance_destroy(obj);
+				return 0;
 			}
 			
 			var payload_len = h2 & 0x7F; //Lower 7 bits
@@ -169,7 +177,8 @@ switch (type) {
 			if (websocketHandshake == false) {
 				if (debug) debug_log("DSNET: Unexpected handshake - closing connection");
 				if (verbose) debug_log("DSNET: Tried to decode data as a websocket response because there's no handshake - but its not a valid websocket request either.");
-				return instance_destroy(obj);
+				instance_destroy(obj);
+				return 0;
 			}
 
 			if (debug) debug_log("DSNET: [" + object_get_name(obj.object_index) + "] Received a valid Websocket connection!");
@@ -195,7 +204,7 @@ switch (type) {
 			return 0;
 		}
 		
-		if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid: " + string(mid));
+		if (msglog) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid: " + string(mid));
 
 		if (is_undefined(handler)) {
 			if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid that is not bound: " + string(mid));
@@ -207,7 +216,8 @@ switch (type) {
 				//No handshake happened yet, we expect the first few bytes to be an internal handshake request
 				if (mtype != 0 || (mid != dsnet_msg.c_ready_for_handshake && mid != dsnet_msg.c_handshake_answer)) {
 					if (debug) debug_log("DSNET: Unexpected handshake - closing connection");
-					return instance_destroy(obj);
+					instance_destroy(obj);
+					return 0;
 				}
 			}
 			
@@ -228,4 +238,8 @@ switch (type) {
 		}
 
         break;
+	default:
+		show_debug_message("NOT CAUGHT OMG");
+		break;
 }
+return 0;

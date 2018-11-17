@@ -20,7 +20,9 @@ dsnet_send_all_but(dsnet_client, server);
 
 // Send all current connected players to the person that joined
 with (obj_example_dsnet_server_client) {
+	show_debug_message("Sending connected client: " + string(dsnet_client.socket));
 	if (other == id) {
+		show_debug_message("Skipping because other == id");
 		continue; //Skip ourselves, we don't need to tell ourselves that we joined :)
 	}
 
@@ -29,4 +31,5 @@ with (obj_example_dsnet_server_client) {
 	dsnet_write(other.dsnet_client, buffer_string, username);
 	dsnet_write(other.dsnet_client, buffer_u8, hue);
 	dsnet_send(other.dsnet_client);
+	show_debug_message("Send Username " + string(username));
 }

@@ -7,4 +7,15 @@ var ip = async_load[? "ip"];
 var buffer = async_load[? "buffer"];
 var size = async_load[? "size"];
 
-__dsnet_network_async(inboundSocket, type, socket, ip, buffer, size);
+if (is_undefined(buffer)) {
+	buffer = false;
+}
+
+if (is_undefined(size)) {
+	size = false;
+}
+
+show_debug_message("               ASYNC EVENT SOCKET"+string(inboundSocket) + "[type: "+string(type)+", socket:"+string(socket)+", ip:"+string(ip)+", buffer:"+string(buffer)+", size:"+string(size)+"]");
+testfunction();
+return __dsnet_network_async(inboundSocket, type, socket, ip, buffer, size);
+show_debug_message("                   AFTER FUNCTION");
