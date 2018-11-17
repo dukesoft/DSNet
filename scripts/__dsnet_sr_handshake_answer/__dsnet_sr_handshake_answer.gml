@@ -9,10 +9,11 @@ if (answer == script_execute(__obj_dsnet_container.handshake_validation_method, 
 	
 	//Send back a welcome message
 	var packet = __dsnet_create_packet(dsnet_msg.s_welcome);
-	dsnet_send(packet);
+	dsnet_send();
 	
 	//Create a connected client for the server using DSNET
-	subclient = instance_create_depth(0, 0, 0, parent.connected_client_object);
+	subclient = instance_create_depth(0, 0, 0, parent.connected_client_object); //[obj_example_dsnet_server_client]
+	subclient.server = parent;
 	subclient.dsnet_client = id; //Link __obj_dsnet_connected_client to the users' one [obj_example_dsnet_server_client]
 	
 	//Trigger the connect event on the users' server, all is good now

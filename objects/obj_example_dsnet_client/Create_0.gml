@@ -1,17 +1,11 @@
 username = "User " + string(round(random(8999)+1000));
-hue = random(255);
-image_blend = make_color_hsv(hue, 192, 192);
+hue = real(random(255));
+mp_id = 0; //We receive this from the server
 
-// Put our player somewhere in the room
-x = 200+random(room_width-200);
-y = 200+random(room_height-200);
+// A map to store all other players' instances
+clients = ds_map_create();
 
-//Our speed
-player_speed = 4; //4*room_speed pixels per frame (so usually 4*60 per second)
-
-//Make ourselves invisible first, because we only want to show ourselves once we've sucessfully connected
-visible = false;
-
+//Start up DSNet
 ds_client = dsnet_client_create(
 	"127.0.0.1", 
 	8000,
@@ -21,3 +15,8 @@ ds_client = dsnet_client_create(
 	__example_dsnet_client_ondisconnect,
 	__example_dsnet_client_ondata 
 );
+
+// Map the messages
+dsnet_msghandle(ex_netmsg.s_info, __example_cr_info);
+dsnet_msghandle(ex_netmsg.s_joined, __example_cr_joined);
+dsnet_msghandle(ex_netmsg.s_position, __example_cr_position);

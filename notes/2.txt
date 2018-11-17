@@ -1,0 +1,15 @@
+
+___________________________________________
+############################################################################################
+FATAL ERROR in
+action number 1
+of Async Event: Networking
+for object __obj_dsnet_container:
+
+Variable <unknown_object>.object_index(13, -2147483648) not set before reading it.
+ at gml_Script___dsnet_network_async (line 182) -               if (verbose) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received message: " + string(mtype) + " - " + string(mid));
+############################################################################################
+--------------------------------------------------------------------------------------------
+stack frame is
+gml_Script___dsnet_network_async (line 182)
+called from - gml_Object___obj_dsnet_container_Other_68 (line 10) - __dsnet_network_async(inboundSocket, type, socket, ip, buffer, size);

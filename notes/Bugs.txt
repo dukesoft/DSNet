@@ -2,3 +2,9 @@ Since GM won't render or do steps in the background in HTML5, but it WILL respon
 the game will partially continue to run on the background - not gamecode - only networking code.
 
 Thats shit, and needs to be fixed. Either stop networking on no focus, or, best solution, continue game code while tabbed out.
+
+
+
+> buffer_read
+
+Replace with a safe dsnet_read() that casts to the correct type, and prevents reading-outside-buffer errors

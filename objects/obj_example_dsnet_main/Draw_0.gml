@@ -8,7 +8,7 @@ if (keyboard_check_pressed(ord("Q"))) {
 	}
 }
 
-if (keyboard_check_pressed(ord("W"))) {
+if (!instance_exists(obj_example_dsnet_client) && keyboard_check_pressed(ord("W"))) {
 	instance_create_depth(0, 0, 0, obj_example_dsnet_client);
 }
 

@@ -15,4 +15,5 @@ connected = false;
 
 parent = noone;
 
-send_buffer = buffer_create(1500, buffer_fixed, 1);
+send_buffer = buffer_create(__obj_dsnet_container.packetsize, buffer_fixed, 1);
+ws_buffer = buffer_create(__obj_dsnet_container.packetsize + 32, buffer_fixed, 1);

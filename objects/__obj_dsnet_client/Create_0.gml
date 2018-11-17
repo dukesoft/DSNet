@@ -1,6 +1,6 @@
 server = false;
 websocket = false;
-send_buffer = buffer_create(1500, buffer_fixed, 1);
+send_buffer = buffer_create(__obj_dsnet_container.packetsize, buffer_fixed, 1);
 clients = ds_map_create();
 
 port = undefined;
@@ -19,3 +19,5 @@ parent = noone;
 messageTimeout = 0;
 
 ping = 0;
+
+subclient = undefined;

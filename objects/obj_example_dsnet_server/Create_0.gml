@@ -21,3 +21,4 @@ debug_log("[EXAMPLE] [SERVER] Server started!");
 
 //Hook up custom events to the clients
 dsnet_msghandle(ex_netmsg.c_info, __example_sr_info);
+dsnet_msghandle(ex_netmsg.c_position, __example_sr_position);

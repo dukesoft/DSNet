@@ -143,7 +143,17 @@ switch (type) {
 				break;
 			case 1: //custom
 				handler = messageMap[? mid];
-				executeOn = obj.subclient; // [obj_example_dsnet_server_client]
+				switch (obj.object_index) {
+					case __obj_dsnet_connected_client: //This is a message from a client, to the server
+						executeOn = obj.subclient; //obj_example_dsnet_server_client
+						break;
+					case __obj_dsnet_client: //This is a message from a server, to a client
+						executeOn = obj.parent; //obj_example_dsnet_client
+						break;
+					default:
+						show_error("Unknown receiver: " + object_get_name(obj.object_index), true);
+						break;
+				}
 				break;
 		}
 		#endregion
@@ -178,11 +188,17 @@ switch (type) {
 			return 0;
 		}
 		#endregion
-
-		if (verbose) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received message: " + string(mtype) + " - " + string(mid));
+		
+		if (is_undefined(executeOn) || !instance_exists(executeOn)) {
+			show_error("DSNET: Received message for non-existing object: " + string(mtype) + " - " + string(mid), true); //@todo maybe remove this?
+			if (debug) debug_log("DSNET: Ignoring message for non-existing object: " + string(mtype) + " - " + string(mid));
+			return 0;
+		}
+		
+		if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid: " + string(mid));
 
 		if (is_undefined(handler)) {
-			if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received message that could not be handled: " + string(mtype) + " - " + string(mid));
+			if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid that is not bound: " + string(mid));
 			return;
 		}
 

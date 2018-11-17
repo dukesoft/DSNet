@@ -1,11 +1,11 @@
 //Setup DSNET
 dsnet_init();
 dsnet_draw_debug(true); // Draws information about connections
-dsnet_debug(false); // Debug logs
+dsnet_debug(true); // Debug logs
 dsnet_verbose(false); // Verbose debug logs
 
 // Now we set up our custom messages. As this can differ per server / client, we hook them up in the actual server and client.
-// But to keep things simple (1 single ENUM), we create that here :)
+// But to keep things simple and ordered (so that message ID's don't clash), we use 1 single ENUM, that we create here
 
 enum ex_netmsg {
 	c_info, //Client sends info to server
@@ -18,3 +18,9 @@ enum ex_netmsg {
 	c_position, //Client sends its position
 	s_position, //Server sends a positional update
 }
+
+//Now for some generic game settings
+player_speed = 4; //4*room_speed pixels per frame (so usually 4*60 per second)
+
+//Now randomize so we all have random colours
+randomize();
