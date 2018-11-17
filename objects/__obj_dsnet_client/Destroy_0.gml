@@ -1,8 +1,8 @@
 ///On destroy we clean up anything that links to us
-if (connected) {
-	with (parent) {
-		script_execute(other.func_disconnect);
-	}
+show_debug_message("__obj_dsnet_client:destroy");
+destroying = true;
+with (parent) {
+	script_execute(other.func_disconnect);
 }
 
 if (!is_undefined(socket)) {

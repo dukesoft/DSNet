@@ -1,12 +1,12 @@
+debug_log("[EXAMPLE] [SERVER] Server started!");
+
 server = dsnet_server_create(
-	
 	8000,  //Port
-	10, //Max players
+	10, //Max connections
 	
 	//Handling functions
-	__example_dsnet_server_onconnect, 
-	__example_dsnet_server_ondisconnect,
-	__example_dsnet_server_ondata,
+	example_server_onconnect, 
+	example_server_ondisconnect,
 	
 	//The instance that will be spawned for a connected client
 	obj_example_dsnet_server_client
@@ -17,8 +17,6 @@ if (server == noone) {
 	instance_destroy();
 }
 
-debug_log("[EXAMPLE] [SERVER] Server started!");
-
 //Hook up custom events to the clients
-dsnet_msghandle(ex_netmsg.c_info, __example_sr_info);
-dsnet_msghandle(ex_netmsg.c_position, __example_sr_position);
+dsnet_msghandle(ex_netmsg.c_info, example_sr_info);
+dsnet_msghandle(ex_netmsg.c_position, example_sr_position);

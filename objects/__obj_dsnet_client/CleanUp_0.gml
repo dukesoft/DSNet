@@ -1,4 +1,5 @@
 ///On clean we free memory we reserved
+show_debug_message("__obj_dsnet_client:cleanup");
 if (!is_undefined(socket)) {
 	if (__obj_dsnet_container.is_html5) {
 		dsnet_js_disconnect(socket);

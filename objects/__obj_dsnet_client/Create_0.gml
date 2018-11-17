@@ -1,3 +1,5 @@
+destroying = false;
+
 server = false;
 websocket = false;
 send_buffer = buffer_create(__obj_dsnet_container.packetsize, buffer_fixed, 1);
@@ -7,8 +9,8 @@ port = undefined;
 maxplayers = undefined;
 network_timeout = undefined;
 
+func_connect = undefined;
 func_disconnect = undefined;
-func_data = undefined;
 
 socket = undefined;
 

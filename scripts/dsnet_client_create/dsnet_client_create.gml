@@ -3,8 +3,6 @@
 
 ///@param function_onConnect
 ///@param function_onDisconnect
-///@param function_onData
-
 
 var instance = instance_create_depth(0, 0, 0, __obj_dsnet_client);
 
@@ -16,7 +14,6 @@ with (instance) {
 	
 	func_connect = argument2;
 	func_disconnect = argument3;
-	func_data = argument4;
 	
 	connected = false;
 	

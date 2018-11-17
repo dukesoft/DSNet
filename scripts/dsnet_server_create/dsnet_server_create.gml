@@ -3,17 +3,17 @@
 
 ///@param function_onConnect
 ///@param function_onDisconnect
-///@param function_onData
 
 ///@param connected_client_object
 
 if (__obj_dsnet_container.is_html5) {
+	show_error("DSNET: Server can not be started in HTML5 mode!", false);
 	if __obj_dsnet_container.debug debug_log("DSNET: Server cannot be started from HTML5 mode!");
 	return noone;
 }
 
-if (!object_exists(argument5)) {
-	debug_log("DSNET: " + string(argument5) + " is not a valid object, can't be used as a connected client. Must be an OBJECT id! Not an instance.");
+if (!object_exists(argument4)) {
+	debug_log("DSNET: " + string(argument4) + " is not a valid object, can't be used as a connected client. Must be an OBJECT id! Not an instance.");
 	return noone;
 }
 
@@ -26,10 +26,9 @@ with (instance) {
 
 	func_connect = argument2;
 	func_disconnect = argument3;
-	func_data = argument4;
 	server_socket = network_create_server_raw(network_socket_tcp, port, maxplayers+1);
 	
-	connected_client_object = argument5;
+	connected_client_object = argument4;
 	
 	if (server < 0) {
 		if __obj_dsnet_container.debug debug_log("DSNET: Server could not be started on port " + string(port));

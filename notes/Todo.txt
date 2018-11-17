@@ -1,0 +1,1 @@
+Rename network_destroy and network_socket_create functions to DSNet functions, and use them as well
