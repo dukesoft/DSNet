@@ -24,4 +24,5 @@ connected = false;
 // Map the messages
 dsnet_msghandle(ex_netmsg.s_info, example_cr_info);
 dsnet_msghandle(ex_netmsg.s_joined, example_cr_joined);
+dsnet_msghandle(ex_netmsg.s_left, example_cr_left);
 dsnet_msghandle(ex_netmsg.s_position, example_cr_position);

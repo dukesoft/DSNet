@@ -12,13 +12,13 @@ if (__obj_dsnet_container.debug) {
 	}
 }
 
+var arr = [];
+var arsize = 0;
+
 with (dsnet_instance) {
 	if (ds_map_size(clients) == 0) {
 		return 0;
 	}
-	
-	var arr = [];
-	var arsize = 0;
 	
 	var key = ds_map_find_first(clients);
 	while (!is_undefined(key)) {
@@ -34,5 +34,4 @@ with (dsnet_instance) {
 	}	
 }
 
-__dsnet_send_array(dsnet_instance, clientsArray);
-
+__dsnet_send_array(dsnet_instance, arr);

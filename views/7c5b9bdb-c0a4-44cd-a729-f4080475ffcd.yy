@@ -9,7 +9,7 @@
         "f5bdd816-a281-425d-a660-9657bab70aa5"
     ],
     "filterType": "GMScript",
-    "folderName": "JS",
+    "folderName": "JS Callbacks",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

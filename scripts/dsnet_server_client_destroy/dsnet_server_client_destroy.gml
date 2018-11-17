@@ -22,10 +22,12 @@ with (connected_client) {
 	}
 	if __obj_dsnet_container.debug debug_log("DSNET: Disconnected socket and destroyed instance");
 	
-	//Trigger the connect event, all is good now
-	with (parent.parent) {
-		script_execute(other.parent.func_disconnect, other.id);
+	//Trigger the disconnect event in our object (), so that we can handle the disconnect there (if anything needs to happen)
+	with (subclient) { //The spawned [obj_example_dsnet_server_client] telling that he's leaving
+		script_execute(other.parent.func_disconnect);
 	}
+	
+	
 	
 	instance_destroy(id, false);
 }

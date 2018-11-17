@@ -1,7 +1,6 @@
 //Loop through the spawned players and remove them
-show_debug_message("obj_example_dsnet_client:destroy");
 var key = ds_map_find_first(clients);
-while (is_string(key)) {
+while (!is_undefined(key)) {
 	instance_destroy(clients[? key]); //Destroys all [obj_example_dsnet_player_other]
 	key = ds_map_find_next(clients, key);
 }

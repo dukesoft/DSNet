@@ -1,3 +1,2 @@
-///@param dsnet_connected_client
-var dsnet_connected_client = argument0;
-debug_log("[EXAMPLE] [SERVER] Client ("+string(dsnet_connected_client)+") joined from " + string(dsnet_connected_client.dsnet_client.ip));
+// This is happening in a connected client [obj_example_dsnet_server_client]
+debug_log("[EXAMPLE] [SERVER] Client ("+string(id)+") joined from " + string(dsnet_client.ip));
