@@ -8,14 +8,12 @@
 
 ///Handle all networking
 // since the async event is triggered EVERYWHERE in EVERY object, this sends it to the proper ones
-show_debug_message("               FUNCTION CALL START");
 var inboundSocket = argument0;
 var type = argument1;
 var socket = argument2;
 var ip = argument3;
 var buffer = argument4;
 var size = argument5;
-show_debug_message("               IN FUNCTION PARAM "+string(inboundSocket) + "[type: "+string(type)+", socket:"+string(socket)+", ip:"+string(ip)+", buffer:"+string(buffer)+", size:"+string(size)+"]");
 
 var p = noone;
 if (verbose) {
