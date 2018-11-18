@@ -1,3 +1,5 @@
+///@param inboundSocket
+
 var inboundSocket = argument0;
 
 var obj = socketHandles[? inboundSocket];

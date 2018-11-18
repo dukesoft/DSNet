@@ -5,7 +5,7 @@ dsnet_debug(true); // Debug logs
 dsnet_verbose(true); // Extra logging information
 dsnet_message_log(true); //Logs eachs incoming message (external)
 
-dsnet_non_blocking(false);
+dsnet_non_blocking(true); //Default on true
 
 // Now we set up our custom messages. As this can differ per server / client, we hook them up in the actual server and client.
 // But to keep things simple and ordered (so that message ID's don't clash), we use 1 single ENUM, that we create here
