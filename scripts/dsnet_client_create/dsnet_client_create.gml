@@ -26,6 +26,17 @@ with (instance) {
 		if __obj_dsnet_container.debug debug_log("DSNET: Starting TCP connection to " + string(ip) + ":" + string(port) + " Socket: " + string(socket));
 		network_set_timeout(socket, __obj_dsnet_container.network_timeout, __obj_dsnet_container.network_timeout);
 		var result = network_connect_raw(socket, ip, port);
+		
+		if (!__obj_dsnet_container.nonblocking) {
+			//This usually happens in the network async, but since we're using a non-blocking we have to manually do it based on the result (as the game waits for response)
+			if (result < 0) {
+				__dsnet_netevent_disconnect_client();
+				return noone;
+			} else {
+				__dsnet_netevent_connect_client();
+			}
+		}
+		
 	}
 }
 

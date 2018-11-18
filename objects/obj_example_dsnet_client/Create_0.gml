@@ -8,7 +8,11 @@ mp_id = 0; //We receive this from the server
 // A map to store all other players' instances
 clients = ds_map_create();
 
+// To potentially display information to the user (Connecting...)
+connected = false;
+
 //Start up DSNet
+ds_client = noone; //In case of a blocking connect, the function call can immediately destroy the client after creating. To prevent "unknown instance" errors, we set this to noone first.
 ds_client = dsnet_client_create(
 	server_ip, 
 	server_port,
@@ -17,9 +21,6 @@ ds_client = dsnet_client_create(
 	example_client_onconnect, 
 	example_client_ondisconnect
 );
-
-// To potentially display information to the user (Connecting...)
-connected = false;
 
 // Map the messages
 dsnet_msghandle(ex_netmsg.s_info, example_cr_info);

@@ -11,6 +11,12 @@ dsnet_create_packet(dsnet_client, ex_netmsg.s_info);
 dsnet_write(dsnet_client, buffer_u8, dsnet_client.socket);
 dsnet_send(dsnet_client);
 
+// Send the ID of this player back second time
+dsnet_create_packet(dsnet_client, ex_netmsg.s_info);
+dsnet_write(dsnet_client, buffer_u8, dsnet_client.socket);
+dsnet_send(dsnet_client);
+
+
 // Tell other people this client has joined
 dsnet_create_packet(server, ex_netmsg.s_joined);
 dsnet_write(server, buffer_u8, dsnet_client.socket);

@@ -8,8 +8,10 @@ while (!is_undefined(key)) {
 // Delete our player
 instance_destroy(obj_example_dsnet_player);
 
-// Delete the client
-dsnet_client_destroy(ds_client);
+// Delete the client if it exists
+if (ds_client != noone) {
+	dsnet_client_destroy(ds_client);
+}
 
 // Clean up
 ds_map_destroy(clients);

@@ -22,7 +22,7 @@ if (verbose) {
 var obj = __dsnet_get_handling_object_for_socket(inboundSocket);
 if (obj == undefined) {
 	if debug debug_log("DSNET: Socket handler for socket " + string(inboundSocket) + " not found!");
-	return 0;
+	return false;
 }
 switch (type) {
     case network_type_connect:
@@ -39,10 +39,7 @@ switch (type) {
 				connected_client.handshake_timer = other.handshake_timeout;
 				ds_map_add(clients, socket, connected_client);
 			} else {
-				//Happening in a real client
-				//We send the fact that we're ready for the handshake
-				__dsnet_create_packet(dsnet_msg.c_ready_for_handshake);
-				dsnet_send();
+				__dsnet_netevent_connect_client();
 			}
 		}
         break;
@@ -51,14 +48,12 @@ switch (type) {
 			if (server) {
 				if (other.debug) debug_log("DSNET: Server received disconnect from client");
 				instance_destroy(clients[? socket]);
-				return 0;
+				return false;
 			} else {
-				if (other.debug) debug_log("DSNET: Client received disconnect");
-				instance_destroy();
-				return 0;
+				__dsnet_netevent_disconnect_client();
 			}
 		}
-		
+		return true;
         break;
     case network_type_data:
 		#region Basic packet checks
@@ -75,7 +70,7 @@ switch (type) {
 		
 		if (size < minSize) {
 			//Discard! All packets should be bigger than 1 byte (internal identifier) + 2 bytes (custom identifier)
-			return 0;
+			return false;
 		}
 		#endregion
 		
@@ -87,7 +82,7 @@ switch (type) {
 			if (!fin) {
 				if (verbose) debug_log("DSNET: Framed WS messages are currently not supported.");
 				instance_destroy(obj);
-				return 0;
+				return false;
 			}
 			
 			var opcode = h1 & 0x0F; //Lower 4 bits
@@ -95,13 +90,13 @@ switch (type) {
 				//Connection termination
 				if (verbose) debug_log("DSNET: Received disconnect opcode.");
 				instance_destroy(obj);
-				return 0;
+				return false;
 			}
 			
 			if (opcode != 0x02) { //Opcode 0x02 = Binary
 				if (verbose) debug_log("DSNET: Only binary WS frames are supported.");
 				instance_destroy(obj);
-				return 0;
+				return false;
 			}
 			
 			var h2 = buffer_read(buffer, buffer_u8);
@@ -110,7 +105,7 @@ switch (type) {
 			if (!masked) {
 				if (verbose) debug_log("DSNET: Non-masked messages are not supported.");
 				instance_destroy(obj);
-				return 0;
+				return false;
 			}
 			
 			var payload_len = h2 & 0x7F; //Lower 7 bits
@@ -176,7 +171,7 @@ switch (type) {
 				if (debug) debug_log("DSNET: Unexpected handshake - closing connection");
 				if (verbose) debug_log("DSNET: Tried to decode data as a websocket response because there's no handshake - but its not a valid websocket request either.");
 				instance_destroy(obj);
-				return 0;
+				return false;
 			}
 
 			if (debug) debug_log("DSNET: [" + object_get_name(obj.object_index) + "] Received a valid Websocket connection!");
@@ -192,21 +187,21 @@ switch (type) {
 				network_send_raw(obj.socket, tempBuffer, buffer_tell(tempBuffer));
 				buffer_delete(tempBuffer); //Remove it, we don't need it anymore
 			}
-			return 0;
+			return false;
 		}
 		#endregion
 		
 		if (is_undefined(executeOn) || !instance_exists(executeOn)) {
 			show_error("DSNET: Received message for non-existing object: " + string(mtype) + " - " + string(mid), true); //@todo maybe remove this?
 			if (debug) debug_log("DSNET: Ignoring message for non-existing object: " + string(mtype) + " - " + string(mid));
-			return 0;
+			return false;
 		}
 		
 		if (msglog) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid: " + string(mid));
 
 		if (is_undefined(handler)) {
 			if (debug) debug_log("DSNET: [" + object_get_name(executeOn.object_index) + "] Received "+string(mtype ? "external" : "internal") + " msgid that is not bound: " + string(mid));
-			return;
+			return false;
 		}
 
 		if (obj.object_index == __obj_dsnet_connected_client) {
@@ -215,7 +210,7 @@ switch (type) {
 				if (mtype != 0 || (mid != dsnet_msg.c_ready_for_handshake && mid != dsnet_msg.c_handshake_answer)) {
 					if (debug) debug_log("DSNET: Unexpected handshake - closing connection");
 					instance_destroy(obj);
-					return 0;
+					return false;
 				}
 			}
 			
@@ -224,7 +219,7 @@ switch (type) {
 			with (executeOn) {
 				script_execute(handler, buffer);
 			}
-			return 0; //Early return
+			return true; //Early return
 		}
 		
 		if (obj.object_index == __obj_dsnet_client) {
@@ -232,12 +227,11 @@ switch (type) {
 			with (executeOn) {
 				script_execute(handler, buffer);
 			}
-			return 0; //Early return
+			return true; //Early return
 		}
 
         break;
 	default:
-		show_debug_message("NOT CAUGHT OMG");
+		show_error("DSNET: Network async event called, but event type not caught...?", true);
 		break;
 }
-return 0;
