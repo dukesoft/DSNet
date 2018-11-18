@@ -19,6 +19,7 @@ with (dsnet_instance) {
 		// We're in the browser - send the packet through the JS extension
 		dsnet_js_send(socket, buffer_get_address(send_buffer), buffer_tell(send_buffer));
 	} else {
+		//Note: This code also resides in __dsnet_send_array
 		if (websocket) { 
 			//If the client is a websocket, we have to add a websocket header to the packet
 			__dsnet_send_buffer_to_ws_buffer();

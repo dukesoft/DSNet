@@ -1,6 +1,6 @@
 ///@param dsnet_server_instance
 ///@param client_array
-///@description This function DOES NOT CHECK CONNECTION STATUS. This is an internal function. if you want to safely send to an array of clients, use dsnet_send_array
+///@description This function DOES NOT CHECK CONNECTION STATUS. This is an internal function.
 
 var dsnet_instance = argument0;
 var arr = argument1;
@@ -16,7 +16,9 @@ with (dsnet_instance) {
 	
 	for (var i = 0; i < arrl; i++) {
 		var _tosend_c = arr[i];
-
+		
+		//Note: This code also resides in dsnet_send
+	
 		if (_tosend_c.websocket) { //If the client is a websocket, we have to pack the packet as a websocket one
 			if (!__dsnet_ws_made) {
 				__dsnet_send_buffer_to_ws_buffer();
@@ -24,7 +26,7 @@ with (dsnet_instance) {
 			}
 			network_send_raw(_tosend_c.socket, ws_buffer, buffer_tell(ws_buffer));
 		} else {
-			network_send_raw(_tosend_c.socket, send_buffer, buffer_tell(send_buffer));
+			network_send_packet(_tosend_c.socket, send_buffer, buffer_tell(send_buffer));
 		}
 	}
 }

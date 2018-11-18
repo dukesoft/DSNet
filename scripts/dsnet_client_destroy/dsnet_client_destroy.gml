@@ -1,5 +1,4 @@
 ///@param ds_client
-show_debug_message("dsnet_client_destroy();");
 if (!instance_exists(argument0) || argument0.object_index != __obj_dsnet_client) {
 	if (__obj_dsnet_container.debug) debug_log("DSNET: " + string(argument0) + " is not a valid client.");
 	return false;

@@ -4,7 +4,6 @@
 var buffer = argument0;
 
 var pid = buffer_read(buffer, buffer_u8);
-show_debug_message("CR JOIN PID " + string(pid));
 player = instance_create_depth(x, y, 0, obj_example_dsnet_other_player);
 with (player) {
 	mp_id = pid;

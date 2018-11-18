@@ -4,7 +4,6 @@
 var buffer = argument0;
 
 var pid = buffer_read(buffer, buffer_u8);
-show_debug_message("CR LEAVE PID " + string(pid));
 var pfound = clients[? pid];
 
 if (!is_undefined(pfound)) {

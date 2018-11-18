@@ -4,7 +4,6 @@
 var buffer = argument0;
 
 mp_id = buffer_read(buffer, buffer_u8);
-show_debug_message("CR OUR PID: " + string(mp_id));
 
 // Now create our own player
 player = instance_create_depth(0, 0, 0, obj_example_dsnet_player);
