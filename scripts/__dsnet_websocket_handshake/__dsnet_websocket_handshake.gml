@@ -1,7 +1,8 @@
-if (live_call(argument0)) return live_result;
+//if (live_call(argument0)) return live_result;
 ///@param request
 ///@description This validates a string to be a valid websocket handshake, and if it is, returns the response. Otherwise returns false.
 var response = argument0;
+show_debug_message("\n====" + string(response) + "\n===");
 requestSet = string_explode("\r\n", response);
 
 /*
@@ -37,6 +38,7 @@ var h_sec_websocket_protocol = undefined;
 var h_sec_websocket_version = undefined;
 var h_origin = undefined;
 
+
 for (var i = 0; i < array_length_1d(requestSet)-2; i++) {
 	var value = extract_header_from_string(requestSet[i]);
 	if (is_array(value) && value[0] == "Host") { h_host = value[1]; }
@@ -48,8 +50,10 @@ for (var i = 0; i < array_length_1d(requestSet)-2; i++) {
 	if (is_array(value) && value[0] == "Origin") { h_origin = value[1]; }
 }
 
-if (h_connection != "Upgrade") {
-	if (verbose) debug_log("DSNET: Websocket request denied: Connection must be 'Upgrade'");
+h_connection = string_explode(", ", h_connection);
+
+if (!in_array("Upgrade", h_connection)) {
+	if (verbose) debug_log("DSNET: Websocket request denied: Connection must contain 'Upgrade'");
 	return false;
 }
 

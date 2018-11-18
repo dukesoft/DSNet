@@ -1,11 +1,13 @@
 //Setup DSNET
 dsnet_init();
 dsnet_draw_debug(true); // Draws information about connections
-dsnet_debug(true); // Debug logs
+dsnet_debug(false); // Debug logs
 dsnet_verbose(false); // Extra logging information
 dsnet_message_log(false); //Logs eachs incoming message (external)
 
 dsnet_non_blocking(true); //Default on true
+
+room_speed = 60;
 
 // Now we set up our custom messages. As this can differ per server / client, we hook them up in the actual server and client.
 // But to keep things simple and ordered (so that message ID's don't clash), we use 1 single ENUM, that we create here
