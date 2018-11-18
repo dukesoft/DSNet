@@ -9,6 +9,8 @@ with (player) {
 	mp_id = pid;
 	username = buffer_read(buffer, buffer_string);
 	hue = buffer_read(buffer, buffer_u8);
+	
+	image_blend = make_color_hsv(hue, 196, 196);
 }
 
 // And store it in our map so we always have a reference to this player
