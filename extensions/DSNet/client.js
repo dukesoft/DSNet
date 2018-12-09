@@ -29,7 +29,13 @@ function dsnet_js_connect(host, port, receive_buffer) {
     __dsnet__connections[mySocket] = connection;
 
     // Let us open a web socket
-    connection.ws_handle = new WebSocket('ws://'+host+':'+port, 'dsnet');
+    let wsProtocol = 'ws:';
+
+    //if (location.protocol === "https:") {
+    //    let wsProtocol = 'wss:';
+    //}
+
+    connection.ws_handle = new WebSocket(wsProtocol + '//'+host+':'+port, 'dsnet');
 
     connection.ws_handle.onopen = function() {
         connection.connected = true;

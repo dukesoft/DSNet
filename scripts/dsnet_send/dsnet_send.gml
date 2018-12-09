@@ -15,9 +15,12 @@ if (__obj_dsnet_container.debug) {
 }
 
 with (dsnet_instance) {
+	var bsize;
+	
 	if (__obj_dsnet_container.is_html5) {
 		// We're in the browser - send the packet through the JS extension
-		dsnet_js_send(socket, buffer_get_address(send_buffer), buffer_tell(send_buffer));
+		bsize = buffer_tell(send_buffer);
+		dsnet_js_send(socket, buffer_get_address(send_buffer), bsize);
 	} else {
 		//Note: This code also resides in __dsnet_send_array
 		if (websocket) { 
@@ -25,7 +28,8 @@ with (dsnet_instance) {
 			__dsnet_send_buffer_to_ws_buffer();
 
 			// We can use send raw since its a WS packed message - WS Client will turn it into seperate packets
-			network_send_raw(socket, ws_buffer, buffer_tell(ws_buffer)); 
+			bsize = buffer_tell(ws_buffer);
+			network_send_raw(socket, ws_buffer, bsize);
 		} else {
 			// @todo
 			// Now that we know we're not in the browser, and the client is not a websocket client.. It might be so that this client is actually ourselves (or a bot) - 
@@ -33,7 +37,13 @@ with (dsnet_instance) {
 			// This saves overhead.
 			
 			// We send this as a packet so that every message triggers an async event in GM
-			network_send_packet(socket, send_buffer, buffer_tell(send_buffer));
+			bsize = buffer_tell(send_buffer);
+			network_send_packet(socket, send_buffer, bsize);
 		}
 	}
+	
+	packets_sent++;
+	_packets_sent_s++;
+	bytes_sent += bsize;
+	_bytes_sent_s += bsize;
 }

@@ -16,3 +16,7 @@ parent = noone;
 
 send_buffer = buffer_create(__obj_dsnet_container.packetsize, buffer_fixed, 1);
 ws_buffer = buffer_create(__obj_dsnet_container.packetsize + 32, buffer_fixed, 1);
+
+created = current_time;
+
+__dsnet_measure_init();

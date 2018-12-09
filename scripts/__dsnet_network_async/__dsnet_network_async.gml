@@ -24,6 +24,12 @@ if (obj == undefined) {
 	if debug debug_log("DSNET: Socket handler for socket " + string(inboundSocket) + " not found!");
 	return false;
 }
+
+obj.packets_received++;
+obj._packets_received_s++;
+obj.bytes_received += size;
+obj._bytes_received_s += size;
+
 switch (type) {
     case network_type_connect:
 	case network_type_non_blocking_connect:

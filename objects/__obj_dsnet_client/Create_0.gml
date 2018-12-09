@@ -23,3 +23,7 @@ messageTimeout = 0;
 ping = 0;
 
 subclient = undefined;
+
+created = current_time;
+
+__dsnet_measure_init();

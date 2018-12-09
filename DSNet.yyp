@@ -503,6 +503,14 @@
             }
         },
         {
+            "Key": "49c002ad-13a1-4f40-bfdb-e5530735d1af",
+            "Value": {
+                "id": "af3d453d-d473-4af7-9d84-c2659493f530",
+                "resourcePath": "views\\49c002ad-13a1-4f40-bfdb-e5530735d1af.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "4a024bca-1712-4e8e-b800-90fc849e34b8",
             "Value": {
                 "id": "552d7d57-f0a8-4040-950f-9a2f3948858e",
@@ -587,6 +595,14 @@
             "Value": {
                 "id": "147a284d-ffbb-468d-90f1-fe8ed898b007",
                 "resourcePath": "scripts\\test_suite_init\\test_suite_init.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "5ed2b12a-d94d-400e-8e73-4caed0eaf444",
+            "Value": {
+                "id": "556d1219-4fe4-447f-8755-ef5c5f16b5c6",
+                "resourcePath": "scripts\\__dsnet_measure_init\\__dsnet_measure_init.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -828,6 +844,14 @@
                 "id": "c1a334fe-b3ba-45d9-8042-85f58a591017",
                 "resourcePath": "views\\889f8b55-1c68-4ce4-9ce1-690af23bcfe2.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "8ac99acc-ac6c-4ac2-95de-224a4dbecf03",
+            "Value": {
+                "id": "182eef49-af3b-491f-af47-d5ce40fe0283",
+                "resourcePath": "scripts\\__dsnet_measure_step\\__dsnet_measure_step.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1322,6 +1346,8 @@
         "f5bdd816-a281-425d-a660-9657bab70aa5",
         "16d11b81-4409-4aef-84e7-3cb48c78e7b0",
         "78446806-0dd7-48a4-8744-fb0414de82ff",
+        "5ed2b12a-d94d-400e-8e73-4caed0eaf444",
+        "8ac99acc-ac6c-4ac2-95de-224a4dbecf03",
         "c902d108-e6ef-4ba8-b221-5841b1cbf6de",
         "7cc8d775-a064-42e8-9b8b-e2577813ba8c",
         "97d5ab13-2195-4d53-800f-f506e8efe44c",
