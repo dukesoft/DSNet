@@ -71,7 +71,7 @@ switch (type) {
 		#region Basic packet checks
 		var minSize = 1 + buffer_sizeof(custom_id_buffer_type); //1 byte for first id
 		
-		if (buffer == undefined) {
+		if (buffer == undefined) { //Buffer is undefined, so probably a JS buffer coming in.
 			buffer = obj.receive_buffer;
 			buffer_seek(buffer, buffer_seek_start, 0);
 		}

@@ -6,5 +6,6 @@ var socket = argument1;
 var bufferSize = argument2;
 
 with (__obj_dsnet_container) {
-	return __dsnet_network_async(inboundSocket, network_type_data, socket, undefined, undefined, bufferSize); //Not sending buffer because its webgl, we know its the receive_buffer in the client
+	//We're not sending the buffer itself (undefined) because we know this is JS in the event - we extract the data there from a shared buffer.
+	return __dsnet_network_async(inboundSocket, network_type_data, socket, undefined, undefined, bufferSize);
 }
