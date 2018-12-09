@@ -42,8 +42,13 @@ with (dsnet_instance) {
 		}
 	}
 	
-	packets_sent++;
-	_packets_sent_s++;
-	bytes_sent += bsize;
-	_bytes_sent_s += bsize;
+	packageObj = id;
+	if (object_index == __obj_dsnet_connected_client) {
+		packageObj = parent;
+	}
+	
+	packageObj.packets_sent++;
+	packageObj._packets_sent_s++;
+	packageObj.bytes_sent += bsize;
+	packageObj._bytes_sent_s += bsize;
 }

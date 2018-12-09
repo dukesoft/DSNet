@@ -25,10 +25,16 @@ if (obj == undefined) {
 	return false;
 }
 
-obj.packets_received++;
-obj._packets_received_s++;
-obj.bytes_received += size;
-obj._bytes_received_s += size;
+if (type == network_type_data) {
+	var packageObj = obj;
+	if (obj.object_index == __obj_dsnet_connected_client) {
+		packageObj = obj.parent;
+	}
+	packageObj.packets_received++;
+	packageObj._packets_received_s++;
+	packageObj.bytes_received += size;
+	packageObj._bytes_received_s += size;
+}
 
 switch (type) {
     case network_type_connect:

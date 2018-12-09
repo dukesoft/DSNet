@@ -9,8 +9,6 @@ dsnet_non_blocking(true); //Default on true
 
 room_speed = 60;
 
-network_create_socket_ext()
-
 // Now we set up our custom messages. As this can differ per server / client, we hook them up in the actual server and client.
 // But to keep things simple and ordered (so that message ID's don't clash), we use 1 single ENUM, that we create here
 
