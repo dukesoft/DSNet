@@ -1,0 +1,45 @@
+{
+  "name": "dsnet",
+  "version": "1.0.0",
+  "description": "DSNet Javascript client framework",
+  "main": "client.js",
+  "scripts": {
+    "build": "npm run compiletoes5 & npm run uglify",
+    "uglify": "./node_modules/.bin/uglifyjs --compress --mangle reserved=['dsnet_js_ws_supported','dsnet_js_connect','dsnet_js_disconnect','dsnet_js_send'] --output build/client.js build/client.js",
+    "compiletoes5": "./node_modules/.bin/babel src -d build",
+    "update": "npm run build & cp ./build/client.js ../extensions/DSNet/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobQuistNL/DSNet.git"
+  },
+  "keywords": [
+    "dukesoft",
+    "websocket",
+    "server",
+    "client",
+    "game",
+    "maker",
+    "studio",
+    "2",
+    "gms2",
+    "gamemakerstudio",
+    "networking",
+    "multiplayer",
+    "tcp",
+    "wrapper"
+  ],
+  "author": "Rob Quist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobQuistNL/DSNet/issues"
+  },
+  "homepage": "https://github.com/RobQuistNL/DSNet#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "install": "^0.12.2",
+    "npm": "^6.4.1",
+    "uglify-js": "^3.4.9"
+  }
+}
