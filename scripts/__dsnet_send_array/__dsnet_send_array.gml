@@ -15,7 +15,7 @@ var bsize;
 
 with (dsnet_instance) {
 	var __dsnet_ws_made = false; //Keep track if we ever make a WS version of the packet
-	
+
 	for (var i = 0; i < arrl; i++) {
 		var _tosend_c = arr[i];
 		

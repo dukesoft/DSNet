@@ -17,6 +17,11 @@ if (__obj_dsnet_container.debug) {
 with (dsnet_instance) {
 	var bsize;
 	
+	if (object_index == __obj_dsnet_client && !connected) {
+		show_error("DSNET: Trying to send data on an not-connected DSNet instance: Returning 0!", false);
+		return 0;
+	}
+	
 	if (__obj_dsnet_container.is_html5) {
 		// We're in the browser - send the packet through the JS extension
 		bsize = buffer_tell(send_buffer);
